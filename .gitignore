@@ -1,0 +1,20 @@
+# macOS
+.DS_Store
+
+# Editors
+.vscode/
+.idea/
+*.swp
+
+# Internal working data for Claude (never published — this repo is served by GitHub Pages)
+/internal/
+/CLAUDE.md
+/CLAUDE.local.md
+
+# Design-tool working files (impeccable)
+/PRODUCT.md
+/DESIGN.md
+/.impeccable/
+
+# Claude Code project files (skills name private paths, so they stay local)
+/.claude/

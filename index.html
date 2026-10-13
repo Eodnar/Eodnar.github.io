@@ -3,18 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Max Lohove | Data Engineer, Berlin</title>
-<meta name="description" content="Max Lohove, Data Engineer und Business Analyst in Berlin. Werdegang, Arbeitsprobe und eigene Projekte.">
-<meta property="og:title" content="Max Lohove | Data Engineer, Berlin">
-<meta property="og:description" content="Data Engineer und Business Analyst mit Operations-Research-Hintergrund. Auf dem Weg in die pflanzliche Lebensmittelbranche.">
+<title>Max Lohove | Data Engineer und Backend-Entwickler, Berlin</title>
+<meta name="description" content="Max Lohove, Data Engineer und Backend-Entwickler in Berlin. Eigene Projekte, Werdegang und eine Arbeitsprobe.">
+<meta property="og:title" content="Max Lohove | Data Engineer und Backend-Entwickler, Berlin">
+<meta property="og:description" content="Data Engineer und Backend-Entwickler mit Operations-Research-Hintergrund. Datenplattformen, Backends und eigene Projekte.">
 <meta property="og:url" content="https://eodnar.github.io/">
 <meta property="og:image" content="https://eodnar.github.io/assets/img/max.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%2312403a'/%3E%3Ctext x='16' y='22' font-family='Arial,sans-serif' font-weight='700' font-size='15' fill='%23fff' text-anchor='middle'%3EML%3C/text%3E%3C/svg%3E">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400..800;1,400&display=swap" rel="stylesheet">
+<link rel="preload" href="assets/fonts/schibsted-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
 <style>
+/* Schrift liegt lokal (SIL Open Font License), damit keine Anfrage an Google geht. */
+@font-face{font-family:"Schibsted Grotesk";font-style:normal;font-weight:400 800;font-display:swap;src:url(assets/fonts/schibsted-grotesk-latin-ext.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:"Schibsted Grotesk";font-style:normal;font-weight:400 800;font-display:swap;src:url(assets/fonts/schibsted-grotesk-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 /*
   Grund: kühles Grau-Grün. Dunkler Abschnitt: Petrol. Einziger Akzent: Rote Bete.
   Die Akzentfarbe markiert im Diagramm die Marktlücke (veganer Käse).
@@ -118,7 +119,7 @@ h3{font-size:1.35rem;line-height:1.25;letter-spacing:-.01em;font-weight:700}
 @media (max-width:860px){.samples .wrap{grid-template-columns:1fr;gap:var(--s4)}}
 
 /* Eigene Projekte */
-.projects{background:var(--surface);border-bottom:1px solid var(--line)}
+.projects{background:var(--surface);border-top:1px solid var(--line)}
 .feature{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,6fr);gap:48px;align-items:start;margin-bottom:var(--s5)}
 .pair{display:grid;grid-template-columns:1fr 1fr;gap:48px}
 .feature h3{font-size:1.6rem;margin-bottom:14px}
@@ -155,12 +156,14 @@ details li{margin-bottom:6px}
 
 /* Werkzeuge */
 .tools{border-top:1px solid var(--line)}
-.toolrow{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:var(--s3);border-top:2px solid var(--ink);padding-top:var(--s3)}
+.toolrow{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--s3);border-top:2px solid var(--ink);padding-top:var(--s3)}
 .toolrow dt{font-weight:700;margin-bottom:6px}
 .toolrow dd{color:var(--muted);font-size:.98rem}
-.ai-note{margin-top:var(--s5);max-width:64ch}
+.notes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s4);margin-top:var(--s5)}
+.ai-note{max-width:64ch}
 .ai-note h3{margin-bottom:10px}
-@media (max-width:980px){.toolrow{grid-template-columns:repeat(3,minmax(0,1fr));row-gap:var(--s4)}}
+@media (max-width:980px){.toolrow{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:var(--s4)}}
+@media (max-width:860px){.notes{grid-template-columns:1fr}}
 @media (max-width:560px){.toolrow{grid-template-columns:1fr 1fr}}
 
 /* Kontakt */
@@ -188,6 +191,7 @@ dialog::backdrop{background:rgba(12,22,20,.82)}
     <a class="brand" href="#start">Max Lohove</a>
     <nav data-aria-de="Hauptnavigation" data-aria-en="Main navigation" aria-label="Hauptnavigation">
       <a class="opt" href="#ueber-mich"><span lang="de">Über mich</span><span lang="en">About</span></a>
+      <a class="opt" href="#projekte"><span lang="de">Projekte</span><span lang="en">Projects</span></a>
       <a class="opt" href="#arbeitsprobe"><span lang="de">Arbeitsprobe</span><span lang="en">Work sample</span></a>
       <a href="#werdegang"><span lang="de">Werdegang</span><span lang="en">Experience</span></a>
       <a class="opt" href="#kontakt"><span lang="de">Kontakt</span><span lang="en">Contact</span></a>
@@ -202,10 +206,10 @@ dialog::backdrop{background:rgba(12,22,20,.82)}
 <section class="hero">
   <div class="wrap">
     <div>
-      <p class="role"><span lang="de">Data Engineer und Business Analyst in Berlin</span><span lang="en">Data engineer and business analyst in Berlin</span></p>
+      <p class="role"><span lang="de">Data Engineer und Backend-Entwickler in Berlin</span><span lang="en">Data engineer and backend developer in Berlin</span></p>
       <h1><span>Max</span> <span>Lohove</span></h1>
-      <p class="sub" lang="de">Ich baue Datenplattformen und rechne Prozesse durch. Jetzt suche ich eine Aufgabe in der <strong>pflanzlichen Lebensmittelbranche</strong>.</p>
-      <p class="sub" lang="en">I build data platforms and work out how processes can run better. Now I'm looking for a role in <strong>plant-based food</strong>.</p>
+      <p class="sub" lang="de">Viereinhalb Jahre habe ich Datenplattformen und Backends gebaut, zuletzt als <strong>technischer Lead</strong>. Jetzt suche ich ein Team, das ein Produkt baut, hinter dem ich stehen kann.</p>
+      <p class="sub" lang="en">I spent four and a half years building data platforms and backends, most recently as <strong>technical lead</strong>. Now I'm looking for a team building a product I can stand behind.</p>
       <div class="actions">
         <a class="btn solid" href="mailto:maxlohove@proton.me"><span lang="de">E-Mail schreiben</span><span lang="en">Send an email</span></a>
         <a class="btn" href="#werdegang"><span lang="de">Werdegang</span><span lang="en">Experience</span></a>
@@ -221,16 +225,16 @@ dialog::backdrop{background:rgba(12,22,20,.82)}
     <div class="prose">
       <h2><span lang="de">Über mich</span><span lang="en">About me</span></h2>
       <div lang="de">
-        <p>Viereinhalb Jahre war ich bei Capgemini im Bereich Insights &amp; Data. Ich habe dort als Business Analyst angefangen und wurde nach anderthalb Jahren <strong>Lead Data Engineer</strong>. Unter anderem habe ich an einer Plattform gearbeitet, mit der sich der <strong>CO₂-Fußabdruck in der Konsumgüterindustrie</strong> analysieren und senken lässt. Für das Backend war ich verantwortlich, und ich habe das Entwicklerteam technisch geleitet.</p>
         <p>Studiert habe ich BWL mit Schwerpunkt <strong>Operations Research</strong> an der RWTH Aachen. Seitdem schaue ich bei Prozessen zuerst, wo es hakt und was man am sinnvollsten zuerst ändert. In einer Case Study mit DHL ging es zum Beispiel darum, die Eingangssortierung der Paketzentren im Weihnachtsgeschäft zu entlasten.</p>
-        <p>Ende 2025 habe ich bei Capgemini gekündigt, um mich neu auszurichten. Ich lebe seit vielen Jahren vegan, davor vegetarisch. Jeden Einzelnen überzeugen kann man nicht. Ein Produkt, das <strong>besser, gesünder und leicht zu bekommen</strong> ist, schafft das eher. Daran will ich mitarbeiten: dass pflanzliche Alternativen besser werden und aus der Nische herauskommen.</p>
-        <p>2026 bin ich von Köln nach Berlin gezogen. Ich habe bei der Tafel mitgeholfen, für eine Festivalbühne Diskokugeln motorisiert und per DMX angesteuert und mir eine FastAPI-App gebaut, mit der ich KI-Modelle vom Handy aus nutze. Außerdem entwickle ich ein 3D-Spiel. Einiges davon war für mich Neuland.</p>
+        <p>Bei Capgemini habe ich als Business Analyst angefangen und wurde nach gut einem Jahr <strong>Lead Data Engineer</strong>. Ich habe Teams von einem bis drei Entwicklern technisch geleitet und selbst mitentwickelt, unter anderem das Backend einer Plattform, mit der sich der <strong>CO₂-Fußabdruck in der Konsumgüterindustrie</strong> analysieren und senken lässt.</p>
+        <p>Ende 2025 habe ich gekündigt, um mich neu auszurichten. Ich will an <strong>Produkten arbeiten, hinter denen ich stehe</strong>, gern in einem Entwicklerteam oder Start-up, in dem man viel selbst baut. Ich lebe seit vielen Jahren vegan, deshalb liegt mir die pflanzliche Lebensmittelbranche besonders nahe. Festgelegt bin ich darauf nicht.</p>
+        <p>2026 bin ich von Köln nach Berlin gezogen und habe das Jahr zum Bauen genutzt: ein KI-Studio, das ich vom Handy aus steuere, ein 3D-Spiel mit Steam-Koop und eine DMX-gesteuerte Diskokugel-Installation für eine Festivalbühne. Godot, Motoren und DMX kannte ich vorher nicht. Ich habe sie mir beigebracht, weil die Projekte sie gebraucht haben.</p>
       </div>
       <div lang="en">
-        <p>I spent four and a half years at Capgemini in Insights &amp; Data. I started as a business analyst and became <strong>Lead Data Engineer</strong> after a year and a half. Among other things, I worked on a platform for analysing and reducing <strong>carbon footprints in the consumer-goods industry</strong>. I was responsible for its backend and was the development team's technical lead.</p>
         <p>I studied business administration with a focus on <strong>operations research</strong> at RWTH Aachen. Since then, I look at a process by first asking where it jams and what's worth fixing first. A case study with DHL, for example, was about easing the load on parcel-centre inbound sorting at Christmas.</p>
-        <p>At the end of 2025 I resigned from Capgemini to reorient myself. I've been vegan for many years, vegetarian before that. You can't convince everyone one by one. A product that is <strong>better, healthier and easy to get</strong> has a much better chance. That's what I want to work on: helping plant-based alternatives get better and grow out of the niche.</p>
-        <p>In 2026 I moved from Cologne to Berlin. I helped out at the Tafel food bank, motorised mirror balls for a festival stage and drove them over DMX, and built a FastAPI app that lets me use AI models from my phone. I'm also developing a 3D game. Some of it was new territory for me.</p>
+        <p>At Capgemini I started as a business analyst and became <strong>Lead Data Engineer</strong> after just over a year. I was technical lead for teams of one to three developers and wrote code myself, including the backend of a platform for analysing and reducing <strong>carbon footprints in the consumer-goods industry</strong>.</p>
+        <p>At the end of 2025 I resigned to reorient myself. I want to work on <strong>products I can stand behind</strong>, ideally in an engineering team or startup where you build a lot yourself. I've been vegan for many years, so plant-based food is especially close to my heart. I'm not limited to it.</p>
+        <p>In 2026 I moved from Cologne to Berlin and spent the year building: an AI studio I control from my phone, a 3D game with Steam co-op, and a DMX-controlled mirror-ball installation for a festival stage. I had never worked with Godot, motors or DMX before. I learned them because the projects needed them.</p>
       </div>
     </div>
 
@@ -238,12 +242,12 @@ dialog::backdrop{background:rgba(12,22,20,.82)}
       <h3 id="seek-h"><span lang="de">Was ich suche</span><span lang="en">What I'm looking for</span></h3>
       <dl>
         <div><dt lang="de">Aufgabe</dt><dt lang="en">Role</dt>
-          <dd lang="de">Data Engineering, Analytics oder BI, gern nah an Supply Chain, Produktion oder Operations</dd>
-          <dd lang="en">Data engineering, analytics or BI, ideally close to supply chain, production or operations</dd></div>
+          <dd lang="de">Data Engineering, Backend-Entwicklung oder Analytics, gern in einem Start-up oder nah an Operations</dd>
+          <dd lang="en">Data engineering, backend development or analytics, ideally at a startup or close to operations</dd></div>
         <div><dt lang="de">Ort</dt><dt lang="en">Location</dt>
           <dd lang="de">Berlin vor Ort, Raum Köln oder remote</dd>
           <dd lang="en">On-site in Berlin, Cologne area or remote</dd></div>
-        <div><dt lang="de">Umfang</dt><dt lang="en">Hours</dt>
+        <div><dt lang="de">Umfang</dt><dt lang="en">Workload</dt>
           <dd lang="de">Voll- oder Teilzeit</dd>
           <dd lang="en">Full-time or part-time</dd></div>
         <div><dt lang="de">Start</dt><dt lang="en">Start</dt>
@@ -251,31 +255,6 @@ dialog::backdrop{background:rgba(12,22,20,.82)}
           <dd lang="en">Available now</dd></div>
       </dl>
     </aside>
-  </div>
-</section>
-
-<!-- ARBEITSPROBE -->
-<section class="samples" id="arbeitsprobe">
-  <div class="wrap">
-    <div class="prose">
-      <h2><span lang="de">Arbeitsprobe: der Markt für pflanzliche Lebensmittel</span><span lang="en">Work sample: the plant-based food market</span></h2>
-      <p lang="de">Für meine Bewerbungen habe ich mir angesehen, wie sich pflanzliche Alternativen in Deutschland entwickeln, mit Daten von GFI Europe, ProVeg, BLE und Destatis. Auffällig ist, dass <strong>veganer Käse als einziges großes Segment Umsatz verliert</strong>, während der Käsekonsum in Deutschland so hoch ist wie nie.</p>
-      <p lang="en">For my applications I looked at how plant-based alternatives are developing in Germany, using data from GFI Europe, ProVeg, BLE and Destatis. One thing stands out: <strong>vegan cheese is the only major segment losing sales</strong>, even though cheese consumption in Germany is at a record high.</p>
-      <p class="note" lang="de">Das Dashboard ist mit Claude als Werkzeug entstanden.</p>
-      <p class="note" lang="en">I built the dashboard using Claude as a tool.</p>
-      <p><a class="btn light" href="projekte/markt-dashboard.html" target="_blank" rel="noopener"><span lang="de">Ganzes Dashboard öffnen</span><span lang="en">Open full dashboard</span></a></p>
-    </div>
-
-    <div class="chart">
-      <div class="seg" role="group" data-aria-de="Ansicht wählen" data-aria-en="Choose view" aria-label="Ansicht wählen">
-        <button type="button" data-view="sales" aria-pressed="true"><span lang="de">Umsatz 2024</span><span lang="en">Sales 2024</span></button>
-        <button type="button" data-view="trend" aria-pressed="false"><span lang="de">Fleisch und Alternativen</span><span lang="en">Meat and alternatives</span></button>
-      </div>
-      <h3 id="chartTitle"></h3>
-      <svg id="chartSvg" viewBox="0 0 640 300" role="group" aria-labelledby="chartTitle"></svg>
-      <p class="readout" id="chartReadout" aria-live="polite"></p>
-      <p class="cap" id="chartCap"></p>
-    </div>
   </div>
 </section>
 
@@ -310,10 +289,10 @@ dialog::backdrop{background:rgba(12,22,20,.82)}
           </div>
         </div>
         <div class="prose">
-          <h3><span lang="de">Ein eigenes 3D-Spiel</span><span lang="en">My own 3D game</span></h3>
-          <!-- Hier gern Engine/Sprache ergänzen, z. B. „Gebaut mit Godot.“ -->
-          <p lang="de">Ein 3D-Dungeon-Crawler nach dem Roguelike-Prinzip, gerade in der <strong>Alpha</strong>.</p>
-          <p lang="en">A 3D roguelike dungeon crawler, currently in <strong>alpha</strong>.</p>
+          <h3><span lang="de">Root Raider, ein 3D-Spiel</span><span lang="en">Root Raider, a 3D game</span></h3>
+          <p lang="de">Ein 3D-Dungeon-Crawler nach dem Roguelike-Prinzip, gerade in der <strong>Alpha</strong>. Man kämpft sich durch Räume, die über Portale verbunden sind, sammelt Waffen und Verbesserungen und besiegt am Ende jedes Levels einen Boss. Gebaut mit <strong>Godot 4 und GDScript</strong>, zusammen mit einem zweiten Entwickler. Dazu gehören Koop-Lobbys für bis zu vier Spieler über Steam.</p>
+          <p lang="en">A 3D roguelike dungeon crawler, currently in <strong>alpha</strong>. You fight through rooms connected by portals, collect weapons and upgrades, and beat a boss at the end of each level. Built with <strong>Godot 4 and GDScript</strong>, together with a second developer. It includes co-op lobbies for up to four players over Steam.</p>
+          <p class="stack">Godot 4, GDScript, GodotSteam</p>
         </div>
       </article>
 
@@ -327,10 +306,38 @@ dialog::backdrop{background:rgba(12,22,20,.82)}
         </div>
         <div class="prose">
           <h3><span lang="de">Diskokugeln für eine Festivalbühne</span><span lang="en">Mirror balls for a festival stage</span></h3>
-          <p lang="de">Die Kugeln sitzen auf höhenverstellbaren Tischbeinen und drehen sich über eigene Motoren. Ich habe alles <strong>selbst verkabelt und programmiert</strong>, gesteuert wird über DMX.</p>
-          <p lang="en">The balls sit on height-adjustable table legs and each rotate on their own motor. I <strong>wired and programmed it myself</strong>; everything runs over DMX.</p>
+          <p lang="de">Die Kugeln sitzen auf höhenverstellbaren Tischbeinen, also Linearantrieben von rund einem Meter, und drehen sich über eigene Motoren. Ich habe alles <strong>selbst verkabelt und programmiert</strong>. Die Firmware läuft auf einem <strong>ESP32</strong> und empfängt vier DMX-Kanäle: Höhe, Fahrgeschwindigkeit, Drehung und Programm.</p>
+          <p lang="de">Endschalter gibt es keine. Die Firmware erkennt die Endlagen am <strong>Motorstrom</strong> und misst in einem Kalibrierlauf selbst, wie lange der Antrieb für den ganzen Weg braucht. Eingestellt wird über eine Weboberfläche im eigenen WLAN des ESP32. Die Steuerlogik ist reines C++ und läuft in Unit-Tests auf dem Rechner, ganz ohne Hardware.</p>
+          <p lang="en">The balls sit on height-adjustable table legs, linear actuators about a metre long, and each rotate on their own motor. I <strong>wired and programmed it myself</strong>. The firmware runs on an <strong>ESP32</strong> and receives four DMX channels: height, travel speed, rotation and program.</p>
+          <p lang="en">There are no limit switches. The firmware detects the end stops from the <strong>motor current</strong> and measures in a calibration run how long the actuator needs for the full stroke. Settings are changed through a web interface on the ESP32's own WiFi. The control logic is plain C++ and runs in unit tests on a computer, without any hardware.</p>
+          <p class="stack">ESP32, C++, PlatformIO, FreeRTOS, DMX512</p>
         </div>
       </article>
+    </div>
+  </div>
+</section>
+
+<!-- ARBEITSPROBE -->
+<section class="samples" id="arbeitsprobe">
+  <div class="wrap">
+    <div class="prose">
+      <h2><span lang="de">Arbeitsprobe: Marktanalyse mit offenen Daten</span><span lang="en">Work sample: a market analysis with public data</span></h2>
+      <p lang="de">Als Beispiel dafür, wie ich an eine Analyse herangehe, habe ich mir angesehen, wie sich pflanzliche Alternativen in Deutschland entwickeln, mit Daten von GFI Europe, ProVeg, BLE und Destatis. Auffällig ist, dass <strong>veganer Käse als einziges großes Segment Umsatz verliert</strong>, während der Käsekonsum in Deutschland so hoch ist wie nie.</p>
+      <p lang="en">As an example of how I approach an analysis, I looked at how plant-based alternatives are developing in Germany, using data from GFI Europe, ProVeg, BLE and Destatis. One thing stands out: <strong>vegan cheese is the only major segment losing sales</strong>, even though cheese consumption in Germany is at a record high.</p>
+      <p class="note" lang="de">Das Dashboard ist mit Claude als Werkzeug entstanden.</p>
+      <p class="note" lang="en">I built the dashboard using Claude as a tool.</p>
+      <p><a class="btn light" href="projekte/markt-dashboard.html" target="_blank" rel="noopener"><span lang="de">Ganzes Dashboard öffnen</span><span lang="en">Open full dashboard</span></a></p>
+    </div>
+
+    <div class="chart">
+      <div class="seg" role="group" data-aria-de="Ansicht wählen" data-aria-en="Choose view" aria-label="Ansicht wählen">
+        <button type="button" data-view="sales" aria-pressed="true"><span lang="de">Umsatz 2024</span><span lang="en">Sales 2024</span></button>
+        <button type="button" data-view="trend" aria-pressed="false"><span lang="de">Fleisch und Alternativen</span><span lang="en">Meat and alternatives</span></button>
+      </div>
+      <h3 id="chartTitle"></h3>
+      <svg id="chartSvg" viewBox="0 0 640 300" role="group" aria-labelledby="chartTitle"></svg>
+      <p class="readout" id="chartReadout" aria-live="polite"></p>
+      <p class="cap" id="chartCap"></p>
     </div>
   </div>
 </section>
@@ -354,20 +361,46 @@ dialog::backdrop{background:rgba(12,22,20,.82)}
         <p class="sum" lang="de">Daten- und KI-Projekte für die Konsumgüterindustrie und die Luftfahrt. Beförderung zum Lead Data Engineer im Oktober 2022.</p>
         <p class="sum" lang="en">Data and AI projects for the consumer-goods and aviation industries. Promoted to Lead Data Engineer in October 2022.</p>
         <details open>
-          <summary><span lang="de">Aufgaben und Stack</span><span lang="en">Tasks and stack</span></summary>
+          <summary><span lang="de">Aufgaben und Stack</span><span lang="en">What I did</span></summary>
           <ul lang="de">
-            <li><strong>Technische Teamleitung</strong> einer Backend- und API-Plattform zur Analyse und Optimierung des CO₂-Fußabdrucks in der Konsumgüterindustrie (Python, FastAPI, Neo4j, PostgreSQL, Azure, Docker, Kubernetes)</li>
+            <li><strong>Technische Teamleitung</strong> (je nach Projekt ein bis drei Entwickler), unter anderem einer Backend- und API-Plattform zur Analyse und Optimierung des CO₂-Fußabdrucks in der Konsumgüterindustrie (Python, FastAPI, Neo4j, PostgreSQL, Azure, Docker, Kubernetes)</li>
             <li>Als Technical Solution Lead Lösungskonzepte und Aufwandsschätzungen für Angebote erstellt</li>
             <li>KI-Anwendungen mit LangChain (LLM-Anbindung, Vector Search, RAG) und Graph-Analysen mit Neo4j Graph Data Science</li>
             <li><strong>SAP-Massendaten</strong> aus Instandhaltung und Beschaffung in der Luftfahrt testgetrieben zu Datenprodukten aufbereitet (Python, PySpark, Parquet, pytest, Jenkins, Airflow)</li>
+            <li>Eigenständig einen <strong>Proof of Concept mit Neo4j</strong> gebaut, der Beziehungen zwischen Datenpunkten im Automotive-Umfeld darstellt und auswertet</li>
+            <li>Prototyp einer durchgängigen IoT-Lösung in Azure: Maschinendaten verarbeitet und in einen Digital Twin eingebunden</li>
+            <li>Im Alltag: CI/CD-Pipelines, Datenbankmigrationen mit Alembic, Codequalität mit ruff, uv, pytest, just und pre-commit, Scrum mit Jira und Confluence</li>
             <li>Neo4j Certified Developer seit 09/2022</li>
           </ul>
           <ul lang="en">
-            <li><strong>Technical team lead</strong> for a backend and API platform for analysing and reducing carbon footprints in the consumer-goods industry (Python, FastAPI, Neo4j, PostgreSQL, Azure, Docker, Kubernetes)</li>
+            <li><strong>Technical team lead</strong> (one to three developers depending on the project), including for a backend and API platform for analysing and reducing carbon footprints in the consumer-goods industry (Python, FastAPI, Neo4j, PostgreSQL, Azure, Docker, Kubernetes)</li>
             <li>As technical solution lead, wrote solution concepts and effort estimates for bids</li>
             <li>AI applications with LangChain (LLM integration, vector search, RAG) and graph analytics with Neo4j Graph Data Science</li>
             <li>Turned <strong>SAP big data</strong> from aviation maintenance and procurement into data products, test-driven (Python, PySpark, Parquet, pytest, Jenkins, Airflow)</li>
+            <li>Built a <strong>proof of concept with Neo4j</strong> on my own that maps and analyses relationships between data points in an automotive context</li>
+            <li>Prototype of an end-to-end IoT solution in Azure: processed machine data and fed it into a digital twin</li>
+            <li>Day to day: CI/CD pipelines, database migrations with Alembic, code quality with ruff, uv, pytest, just and pre-commit, Scrum with Jira and Confluence</li>
             <li>Neo4j Certified Developer since 09/2022</li>
+          </ul>
+        </details>
+      </li>
+      <li>
+        <p class="when">2020</p>
+        <h3><span lang="de">Mitgründer, Flashkill</span><span lang="en">Co-founder, Flashkill</span></h3>
+        <p class="org"><span lang="de">Köln</span><span lang="en">Cologne</span></p>
+        <p class="sum" lang="de">Eine Analyseplattform für Counter-Strike-Teams. Sie bereitet Ligadaten der deutschen E-Sport-Szene so auf, dass sich Teams schneller auf ihre Gegner vorbereiten können. Die Idee kam aus meiner Zeit als Coach: Die Recherche vor jedem Spiel hat enorm viel Zeit gekostet.</p>
+        <p class="sum" lang="en">An analytics platform for Counter-Strike teams. It prepares league data from the German esports scene so that teams can get ready for their opponents faster. The idea came from my time as a coach: the research before every match took an enormous amount of time.</p>
+        <details>
+          <summary><span lang="de">Mein Teil</span><span lang="en">My part</span></summary>
+          <ul lang="de">
+            <li>Markt- und Nutzeranalyse, Konzept und Businessplan</li>
+            <li>Prototypen, Produktdesign und Proof of Concept</li>
+            <li>Arbeit im Team koordiniert: Meilensteine, Fortschritt und Arbeitszeit in Jira</li>
+          </ul>
+          <ul lang="en">
+            <li>Market and user analysis, concept and business plan</li>
+            <li>Prototypes, product design and proof of concept</li>
+            <li>Coordinated the team's work: milestones, progress and time tracking in Jira</li>
           </ul>
         </details>
       </li>
@@ -375,16 +408,16 @@ dialog::backdrop{background:rgba(12,22,20,.82)}
         <p class="when">10/2017 – 06/2020</p>
         <h3><span lang="de">M.Sc. BWL, Operations Research und Management</span><span lang="en">M.Sc. Business Administration, Operations Research and Management</span></h3>
         <p class="org">RWTH Aachen</p>
-        <p class="sum" lang="de">Masterarbeit: Lebenszyklusanalyse des Kunststoffrecyclings in NRW.</p>
-        <p class="sum" lang="en">Thesis: life-cycle assessment of plastics recycling in North Rhine-Westphalia.</p>
+        <p class="sum" lang="de">Masterarbeit: Lebenszyklusanalyse des Kunststoffrecyclings in NRW. Ich habe Recyclingverfahren für Verpackungsabfälle nach ihrer Umweltwirkung verglichen und daraus ein Modell für mehrere Zukunftsszenarien abgeleitet. Geschrieben auf Englisch.</p>
+        <p class="sum" lang="en">Thesis: life-cycle assessment of plastics recycling in North Rhine-Westphalia. I compared recycling processes for packaging waste by their environmental impact and derived a model for several future scenarios. Written in English.</p>
         <details>
           <summary><span lang="de">Case Study und Tutorium</span><span lang="en">Case study and tutoring</span></summary>
           <ul lang="de">
-            <li><strong>Case Study mit Deutsche Post DHL</strong> (10/2017 – 02/2018): Überlastung der Paketzentren in der Eingangssortierung zur Weihnachtszeit, lineares Optimierungsmodell in Python und AIMMS, gelöst mit Gurobi</li>
+            <li><strong>Case Study mit Deutsche Post DHL</strong> (10/2017 – 02/2018): Überlastung der Paketzentren in der Eingangssortierung zur Weihnachtszeit, Daten mit Pandas und NumPy aufbereitet, lineares Optimierungsmodell in Python und AIMMS, gelöst mit Gurobi</li>
             <li>Tutor am Lehrstuhl für Managementwissenschaft (04/2017 – 04/2019): wöchentlich Vorlesungsinhalte präsentiert, Übungen geleitet, Abschlussprüfungen korrigiert, Updates der Linux-Lehrstuhlsysteme mit Python automatisiert</li>
           </ul>
           <ul lang="en">
-            <li><strong>Case study with Deutsche Post DHL</strong> (10/2017 – 02/2018): overloaded parcel centres in inbound sorting at Christmas, linear optimisation model in Python and AIMMS, solved with Gurobi</li>
+            <li><strong>Case study with Deutsche Post DHL</strong> (10/2017 – 02/2018): overloaded parcel centres in inbound sorting at Christmas, data prepared with Pandas and NumPy, linear optimisation model in Python and AIMMS, solved with Gurobi</li>
             <li>Tutor at the Chair of Management Science (04/2017 – 04/2019): gave weekly presentations of lecture content, ran exercise classes, marked final exams, automated updates of the chair's Linux systems in Python</li>
           </ul>
         </details>
@@ -393,8 +426,14 @@ dialog::backdrop{background:rgba(12,22,20,.82)}
         <p class="when">10/2014 – 10/2017</p>
         <h3><span lang="de">B.Sc. BWL</span><span lang="en">B.Sc. Business Administration</span></h3>
         <p class="org">RWTH Aachen, Shanghai Jiao Tong University</p>
-        <p class="sum" lang="de">Auslandssemester in Shanghai, Dean's List (beste 5 % des Jahrgangs). Bachelorarbeit über Online-Dial-a-Ride-Algorithmen, umgesetzt in Python.</p>
-        <p class="sum" lang="en">Semester abroad in Shanghai, Dean's List (top 5% of the cohort). Bachelor's thesis on online dial-a-ride algorithms, implemented in Python.</p>
+        <p class="sum" lang="de">Auslandssemester in Shanghai, Dean's List (beste 5 % des Jahrgangs). In der Bachelorarbeit habe ich drei Online-Dial-a-Ride-Algorithmen in Python umgesetzt und mit Industriedaten verglichen. Sie berechnen Routen für Logistikfahrzeuge aus Transportaufträgen, die nacheinander eintreffen.</p>
+        <p class="sum" lang="en">Semester abroad in Shanghai, Dean's List (top 5% of the cohort). For my bachelor's thesis I implemented three online dial-a-ride algorithms in Python and compared them on industry data. They compute routes for logistics vehicles from transport orders that arrive one after another.</p>
+      </li>
+      <li>
+        <p class="when">2012 – 2014</p>
+        <h3><span lang="de">Davor</span><span lang="en">Before that</span></h3>
+        <p class="sum" lang="de">Nach dem Abitur neun Monate auf eigene Faust in Australien gereist und gearbeitet. Danach ein Praktikum im Projekt- und Supply-Chain-Management bei LANXESS und ein Jahr Wirtschaftsingenieurwesen an der RWTH Aachen, bevor ich zur BWL gewechselt bin.</p>
+        <p class="sum" lang="en">After school I spent nine months travelling and working in Australia on my own. Then an internship in project and supply chain management at LANXESS and a year of industrial engineering at RWTH Aachen, before I switched to business administration.</p>
       </li>
     </ol>
   </div>
@@ -405,16 +444,26 @@ dialog::backdrop{background:rgba(12,22,20,.82)}
   <div class="wrap">
     <h2><span lang="de">Werkzeuge</span><span lang="en">Tools</span></h2>
     <dl class="toolrow">
-      <div><dt><span lang="de">Daten</span><span lang="en">Data</span></dt><dd>Python, SQL, PySpark, Pandas, Airflow, PostgreSQL, Parquet</dd></div>
+      <div><dt><span lang="de">Daten</span><span lang="en">Data</span></dt><dd>Python, SQL, PySpark, Pandas, NumPy, Jupyter, Airflow, PostgreSQL, Parquet</dd></div>
       <div><dt><span lang="de">Graph und KI</span><span lang="en">Graph and AI</span></dt><dd>Neo4j, Cypher, Graph Data Science, LangChain, RAG, Vector Search</dd></div>
-      <div><dt><span lang="de">Backend und Betrieb</span><span lang="en">Backend and operations</span></dt><dd>FastAPI, SQLAlchemy, Docker, Kubernetes, Azure, CI/CD, Jenkins, pytest</dd></div>
-      <div><dt><span lang="de">Analyse und Optimierung</span><span lang="en">Analysis and optimisation</span></dt><dd>Power BI, Tableau, Gurobi, AIMMS, GAMS</dd></div>
-      <div><dt><span lang="de">Sprachen</span><span lang="en">Languages</span></dt><dd lang="de">Deutsch (Muttersprache), Englisch (verhandlungssicher), Mandarin (Grundkenntnisse)</dd><dd lang="en">German (native), English (fluent), Mandarin (basic)</dd></div>
+      <div><dt><span lang="de">Backend und Betrieb</span><span lang="en">Backend and operations</span></dt><dd>FastAPI, SQLAlchemy, Pydantic, Alembic, Docker, Kubernetes, Azure, CI/CD, pytest, ruff, uv</dd></div>
+      <div><dt><span lang="de">Analyse und Optimierung</span><span lang="en">Analysis and optimisation</span></dt><dd>Power BI, Tableau, NeoDash, Gurobi, AIMMS, GAMS</dd></div>
     </dl>
-    <div class="ai-note prose">
-      <h3><span lang="de">Wie ich KI nutze</span><span lang="en">How I use AI</span></h3>
-      <p lang="de">Ich nutze KI täglich: bei Capgemini zuletzt in RAG-Projekten, heute vor allem in eigenen Projekten. Was sie liefert, prüfe ich. Ich setze sie da ein, wo ich das Ergebnis selbst beurteilen kann.</p>
-      <p lang="en">I use AI daily: at Capgemini on RAG projects, now mainly in my own projects. I check what it produces, and I use it where I can judge the result myself.</p>
+    <div class="notes">
+      <div class="ai-note prose">
+        <h3><span lang="de">Zertifikate und Kurse</span><span lang="en">Certificates and courses</span></h3>
+        <p>Neo4j Certified Developer (2022) · Postman Academy, Engineer Learning Path (2024) · Coursera: SQL for Data Science, Data Visualization with Python, Fundamentals of Visualization with Tableau</p>
+      </div>
+      <div class="ai-note prose">
+        <h3><span lang="de">Sprachen</span><span lang="en">Languages</span></h3>
+        <p lang="de">Deutsch (Muttersprache), Englisch (verhandlungssicher), Mandarin (Grundkenntnisse)</p>
+        <p lang="en">German (native), English (fluent), Mandarin (basic)</p>
+      </div>
+      <div class="ai-note prose">
+        <h3><span lang="de">Wie ich KI nutze</span><span lang="en">How I use AI</span></h3>
+        <p lang="de">Ich nutze KI täglich: bei Capgemini zuletzt in RAG-Projekten, heute vor allem in eigenen Projekten. Was sie liefert, prüfe ich. Ich setze sie da ein, wo ich das Ergebnis selbst beurteilen kann.</p>
+        <p lang="en">I use AI daily: at Capgemini on RAG projects, now mainly in my own projects. I check what it produces, and I use it where I can judge the result myself.</p>
+      </div>
     </div>
   </div>
 </section>
