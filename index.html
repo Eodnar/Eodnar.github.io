@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="de" data-lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Max Lohove | Data Engineer, Berlin</title>
+<meta name="description" content="Max Lohove, Data Engineer und Business Analyst in Berlin. Werdegang, Arbeitsprobe und eigene Projekte.">
+<meta property="og:title" content="Max Lohove | Data Engineer, Berlin">
+<meta property="og:description" content="Data Engineer und Business Analyst mit Operations-Research-Hintergrund. Auf dem Weg in die pflanzliche Lebensmittelbranche.">
+<meta property="og:url" content="https://eodnar.github.io/">
+<meta property="og:image" content="https://eodnar.github.io/assets/img/max.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%2312403a'/%3E%3Ctext x='16' y='22' font-family='Arial,sans-serif' font-weight='700' font-size='15' fill='%23fff' text-anchor='middle'%3EML%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400..800;1,400&display=swap" rel="stylesheet">
+<style>
+/*
+  Grund: kühles Grau-Grün. Dunkler Abschnitt: Petrol. Einziger Akzent: Rote Bete.
+  Die Akzentfarbe markiert im Diagramm die Marktlücke (veganer Käse).
+  Ecken überall 6px, keine Schatten außer im Bildbetrachter.
+*/
+:root{
+  --paper:#eef1ed; --surface:#f8f9f7; --ink:#18221f; --muted:#4f5c57; --line:#cfd6d0;
+  --petrol:#12403a; --petrol-ink:#e4ece8; --petrol-muted:#a9c2ba;
+  --beet:#a0285a; --beet-dark:#821f48; --beet-light:#ec8bb1;
+  --r:6px; --wrap:1180px;
+  --s1:8px; --s2:16px; --s3:24px; --s4:40px; --s5:64px; --s6:96px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+body{font-family:"Schibsted Grotesk",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:1.0625rem;line-height:1.6;background:var(--paper);color:var(--ink)}
+img{max-width:100%;display:block}
+a{color:var(--beet);text-underline-offset:3px;text-decoration-thickness:1px}
+a:hover{color:var(--beet-dark)}
+strong{font-weight:700;color:var(--ink)}
+:focus-visible{outline:2px solid var(--beet);outline-offset:3px;border-radius:2px}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 var(--s3)}
+
+/* Sprachumschaltung */
+html[data-lang="de"] body [lang="en"],
+html[data-lang="en"] body [lang="de"]{display:none!important}
+
+/* Kopfzeile */
+.top{position:sticky;top:0;z-index:20;background:rgba(238,241,237,.93);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:var(--s2)}
+.brand{font-weight:800;font-size:1.05rem;color:var(--ink);text-decoration:none;letter-spacing:-.01em}
+.top nav{display:flex;align-items:center;gap:26px}
+.top nav a{color:var(--muted);text-decoration:none;font-weight:500;font-size:.98rem}
+.top nav a:hover{color:var(--ink)}
+.lang{font:inherit;font-weight:600;font-size:.92rem;background:none;border:1px solid var(--line);border-radius:var(--r);padding:5px 10px;color:var(--ink);cursor:pointer}
+.lang:hover{border-color:var(--ink)}
+@media (max-width:720px){.top nav a.opt{display:none}.top nav{gap:var(--s2)}}
+
+/* Buttons */
+.btn{display:inline-block;font-weight:700;text-decoration:none;padding:13px 20px;border-radius:var(--r);border:1.5px solid var(--ink);color:var(--ink);white-space:nowrap;background:none;font-family:inherit;font-size:1rem;cursor:pointer}
+.btn:hover{background:var(--ink);color:var(--paper)}
+.btn.solid{background:var(--beet);border-color:var(--beet);color:#fff}
+.btn.solid:hover{background:var(--beet-dark);border-color:var(--beet-dark)}
+.btn:active{transform:translateY(1px)}
+
+/* Hero */
+.hero{padding:var(--s5) 0 var(--s6)}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:56px;align-items:end}
+.role{font-weight:500;color:var(--muted);font-size:1.05rem}
+.hero h1{font-size:clamp(3.2rem,9vw,7.6rem);line-height:.9;font-weight:800;letter-spacing:-.045em;margin:14px 0 30px}
+.hero h1 span{display:block}
+.hero p.sub{font-size:1.28rem;line-height:1.5;max-width:32ch}
+.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+.portrait{border-radius:var(--r);overflow:hidden;aspect-ratio:4/5;background:var(--line)}
+.portrait img{width:100%;height:100%;object-fit:cover}
+@media (max-width:860px){.hero .wrap{grid-template-columns:minmax(0,3fr) minmax(0,2fr);gap:32px}}
+@media (max-width:599px){
+  .hero{padding:32px 0 56px}
+  .hero .wrap{grid-template-columns:1fr;gap:20px}
+  .portrait{order:-1;width:112px;aspect-ratio:1}
+  .hero h1{margin-bottom:22px}
+}
+
+/* Abschnitte */
+section{padding:clamp(56px,8vw,var(--s6)) 0}
+h2{font-size:clamp(1.9rem,3.6vw,2.7rem);line-height:1.1;letter-spacing:-.025em;font-weight:800;margin-bottom:28px;max-width:26ch}
+h3{font-size:1.35rem;line-height:1.25;letter-spacing:-.01em;font-weight:700}
+.prose p{max-width:64ch;margin-bottom:18px}
+.prose p:last-child{margin-bottom:0}
+
+/* Über mich */
+.about{border-top:1px solid var(--line)}
+.about .wrap{display:grid;grid-template-columns:minmax(0,8fr) minmax(0,4fr);gap:var(--s5)}
+.seek{align-self:start;position:sticky;top:96px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:26px 26px 22px}
+.seek h3{font-size:1.1rem;margin-bottom:var(--s2)}
+.seek dl{display:grid;gap:14px}
+.seek dt{font-weight:700;font-size:.95rem}
+.seek dd{color:var(--muted);font-size:.98rem}
+@media (max-width:860px){.about .wrap{grid-template-columns:1fr;gap:var(--s4)}.seek{position:static;order:-1}}
+
+/* Arbeitsprobe (dunkler Abschnitt mit Diagramm) */
+.samples{background:var(--petrol);color:var(--petrol-ink)}
+.samples h2,.samples h3,.samples strong{color:#fff}
+.samples :focus-visible{outline-color:#fff}
+.samples .wrap{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:var(--s5);align-items:start}
+.samples .prose p{max-width:52ch}
+.samples .note{color:var(--petrol-muted);font-size:.95rem}
+.btn.light{border-color:#fff;color:#fff}
+.btn.light:hover{background:#fff;color:var(--petrol)}
+.chart{border:1px solid rgba(255,255,255,.18);border-radius:var(--r);padding:var(--s3)}
+.seg{display:inline-flex;border:1px solid rgba(255,255,255,.35);border-radius:var(--r);overflow:hidden;margin-bottom:var(--s3)}
+.seg button{font:inherit;font-weight:600;font-size:.92rem;background:none;border:0;color:var(--petrol-ink);padding:8px 14px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--petrol-ink);color:var(--petrol)}
+.chart h3{font-size:1.1rem;margin-bottom:4px}
+.chart .cap{color:var(--petrol-muted);font-size:.9rem;margin-top:var(--s2)}
+.chart svg{width:100%;height:auto;display:block;margin-top:var(--s2);overflow:visible}
+.chart svg text{font-family:inherit;fill:var(--petrol-ink)}
+.chart .bar:focus{outline:none}
+.chart .bar:focus rect,.chart .bar:hover rect{stroke:#fff;stroke-width:2}
+.chart .readout{min-height:1.6em;margin-top:var(--s1);font-weight:600;color:#fff}
+@media (max-width:860px){.samples .wrap{grid-template-columns:1fr;gap:var(--s4)}}
+
+/* Eigene Projekte */
+.projects{background:var(--surface);border-bottom:1px solid var(--line)}
+.feature{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,6fr);gap:48px;align-items:start;margin-bottom:var(--s5)}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+.feature h3{font-size:1.6rem;margin-bottom:14px}
+.pair h3{margin-bottom:10px}
+.gallery + .prose h3{margin-top:22px}
+.feature .gallery + .prose h3{margin-top:0}
+.no-media{grid-template-columns:minmax(0,1fr)!important}
+.stack{color:var(--muted);font-size:.95rem;font-weight:500;margin-top:14px}
+@media (max-width:860px){.feature,.pair{grid-template-columns:1fr;gap:var(--s4)}}
+
+/* Galerie */
+.shot{position:relative;display:block;width:100%;border:0;padding:0;background:var(--line);border-radius:var(--r);overflow:hidden;cursor:zoom-in;aspect-ratio:16/10}
+.shot img{width:100%;height:100%;object-fit:cover}
+.shot.tall{aspect-ratio:4/3;background:var(--petrol)}
+.shot.tall img{object-fit:contain}
+.thumbs{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
+
+/* Werdegang */
+.timeline{list-style:none;border-left:2px solid var(--line);margin-left:6px}
+.timeline > li{position:relative;padding:0 0 34px 34px}
+.timeline > li::before{content:"";position:absolute;left:-7px;top:9px;width:12px;height:12px;border-radius:50%;background:var(--paper);border:2px solid var(--muted)}
+.timeline > li.now::before{background:var(--beet);border-color:var(--beet)}
+.when{font-weight:600;color:var(--muted);font-size:.95rem;font-variant-numeric:tabular-nums}
+.timeline h3{margin:2px 0}
+.org{color:var(--muted)}
+.timeline p.sum{margin-top:var(--s1);max-width:64ch}
+details{margin-top:var(--s1);max-width:70ch}
+summary{cursor:pointer;color:var(--beet);font-weight:600;font-size:.95rem;list-style:none;display:inline-block}
+summary::-webkit-details-marker{display:none}
+summary::after{content:" +"}
+details[open] summary::after{content:" \2212"}
+details ul{margin:10px 0 0 18px}
+details li{margin-bottom:6px}
+
+/* Werkzeuge */
+.tools{border-top:1px solid var(--line)}
+.toolrow{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:var(--s3);border-top:2px solid var(--ink);padding-top:var(--s3)}
+.toolrow dt{font-weight:700;margin-bottom:6px}
+.toolrow dd{color:var(--muted);font-size:.98rem}
+.ai-note{margin-top:var(--s5);max-width:64ch}
+.ai-note h3{margin-bottom:10px}
+@media (max-width:980px){.toolrow{grid-template-columns:repeat(3,minmax(0,1fr));row-gap:var(--s4)}}
+@media (max-width:560px){.toolrow{grid-template-columns:1fr 1fr}}
+
+/* Kontakt */
+.contact{background:var(--surface);border-top:1px solid var(--line);padding-bottom:var(--s6)}
+.mail{display:inline-block;font-size:clamp(1.7rem,5.4vw,4rem);font-weight:800;letter-spacing:-.035em;line-height:1.05;color:var(--ink);text-decoration:none;border-bottom:3px solid var(--beet);padding-bottom:4px;overflow-wrap:anywhere}
+.mail:hover{color:var(--beet)}
+.contact .more{margin-top:28px;display:flex;gap:var(--s3);flex-wrap:wrap;align-items:center;font-weight:600}
+footer{padding:28px 0 var(--s4);color:var(--muted);font-size:.9rem}
+
+/* Bildbetrachter */
+dialog{border:0;padding:0;background:transparent;max-width:min(1100px,94vw);width:100%;margin:auto}
+dialog::backdrop{background:rgba(12,22,20,.82)}
+.viewer{position:relative;background:var(--ink);border-radius:var(--r);overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.45)}
+.viewer img{width:100%;max-height:82vh;object-fit:contain;background:#0f1715}
+.viewer figcaption{color:#d5ddd9;padding:12px 18px;font-size:.95rem}
+.vbtn{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.92);border:0;border-radius:var(--r);width:44px;height:44px;font:700 1.3rem/1 inherit;cursor:pointer;color:var(--ink)}
+.vprev{left:12px}.vnext{right:12px}
+.vclose{position:absolute;top:10px;right:10px;background:rgba(255,255,255,.92);border:0;border-radius:var(--r);padding:8px 12px;font:600 .9rem inherit;cursor:pointer;color:var(--ink)}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#start">Max Lohove</a>
+    <nav data-aria-de="Hauptnavigation" data-aria-en="Main navigation" aria-label="Hauptnavigation">
+      <a class="opt" href="#ueber-mich"><span lang="de">Über mich</span><span lang="en">About</span></a>
+      <a class="opt" href="#arbeitsprobe"><span lang="de">Arbeitsprobe</span><span lang="en">Work sample</span></a>
+      <a href="#werdegang"><span lang="de">Werdegang</span><span lang="en">Experience</span></a>
+      <a class="opt" href="#kontakt"><span lang="de">Kontakt</span><span lang="en">Contact</span></a>
+      <button class="lang" id="langBtn" type="button"><span lang="de">English</span><span lang="en">Deutsch</span></button>
+    </nav>
+  </div>
+</header>
+
+<main id="start">
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <p class="role"><span lang="de">Data Engineer und Business Analyst in Berlin</span><span lang="en">Data engineer and business analyst in Berlin</span></p>
+      <h1><span>Max</span> <span>Lohove</span></h1>
+      <p class="sub" lang="de">Ich baue Datenplattformen und rechne Prozesse durch. Jetzt suche ich eine Aufgabe in der <strong>pflanzlichen Lebensmittelbranche</strong>.</p>
+      <p class="sub" lang="en">I build data platforms and work out how processes can run better. Now I'm looking for a role in <strong>plant-based food</strong>.</p>
+      <div class="actions">
+        <a class="btn solid" href="mailto:maxlohove@proton.me"><span lang="de">E-Mail schreiben</span><span lang="en">Send an email</span></a>
+        <a class="btn" href="#werdegang"><span lang="de">Werdegang</span><span lang="en">Experience</span></a>
+      </div>
+    </div>
+    <div class="portrait"><img src="assets/img/max.jpg" data-alt-de="Porträt von Max Lohove" data-alt-en="Portrait of Max Lohove" alt="Porträt von Max Lohove" width="900" height="1125" fetchpriority="high"></div>
+  </div>
+</section>
+
+<!-- ÜBER MICH -->
+<section class="about" id="ueber-mich">
+  <div class="wrap">
+    <div class="prose">
+      <h2><span lang="de">Über mich</span><span lang="en">About me</span></h2>
+      <div lang="de">
+        <p>Viereinhalb Jahre war ich bei Capgemini im Bereich Insights &amp; Data. Ich habe dort als Business Analyst angefangen und wurde nach anderthalb Jahren <strong>Lead Data Engineer</strong>. Unter anderem habe ich an einer Plattform gearbeitet, mit der sich der <strong>CO₂-Fußabdruck in der Konsumgüterindustrie</strong> analysieren und senken lässt. Für das Backend war ich verantwortlich, und ich habe das Entwicklerteam technisch geleitet.</p>
+        <p>Studiert habe ich BWL mit Schwerpunkt <strong>Operations Research</strong> an der RWTH Aachen. Seitdem schaue ich bei Prozessen zuerst, wo es hakt und was man am sinnvollsten zuerst ändert. In einer Case Study mit DHL ging es zum Beispiel darum, die Eingangssortierung der Paketzentren im Weihnachtsgeschäft zu entlasten.</p>
+        <p>Ende 2025 habe ich bei Capgemini gekündigt, um mich neu auszurichten. Ich lebe seit vielen Jahren vegan, davor vegetarisch. Jeden Einzelnen überzeugen kann man nicht. Ein Produkt, das <strong>besser, gesünder und leicht zu bekommen</strong> ist, schafft das eher. Daran will ich mitarbeiten: dass pflanzliche Alternativen besser werden und aus der Nische herauskommen.</p>
+        <p>2026 bin ich von Köln nach Berlin gezogen. Ich habe bei der Tafel mitgeholfen, für eine Festivalbühne Diskokugeln motorisiert und per DMX angesteuert und mir eine FastAPI-App gebaut, mit der ich KI-Modelle vom Handy aus nutze. Außerdem entwickle ich ein 3D-Spiel. Einiges davon war für mich Neuland.</p>
+      </div>
+      <div lang="en">
+        <p>I spent four and a half years at Capgemini in Insights &amp; Data. I started as a business analyst and became <strong>Lead Data Engineer</strong> after a year and a half. Among other things, I worked on a platform for analysing and reducing <strong>carbon footprints in the consumer-goods industry</strong>. I was responsible for its backend and was the development team's technical lead.</p>
+        <p>I studied business administration with a focus on <strong>operations research</strong> at RWTH Aachen. Since then, I look at a process by first asking where it jams and what's worth fixing first. A case study with DHL, for example, was about easing the load on parcel-centre inbound sorting at Christmas.</p>
+        <p>At the end of 2025 I resigned from Capgemini to reorient myself. I've been vegan for many years, vegetarian before that. You can't convince everyone one by one. A product that is <strong>better, healthier and easy to get</strong> has a much better chance. That's what I want to work on: helping plant-based alternatives get better and grow out of the niche.</p>
+        <p>In 2026 I moved from Cologne to Berlin. I helped out at the Tafel food bank, motorised mirror balls for a festival stage and drove them over DMX, and built a FastAPI app that lets me use AI models from my phone. I'm also developing a 3D game. Some of it was new territory for me.</p>
+      </div>
+    </div>
+
+    <aside class="seek" aria-labelledby="seek-h">
+      <h3 id="seek-h"><span lang="de">Was ich suche</span><span lang="en">What I'm looking for</span></h3>
+      <dl>
+        <div><dt lang="de">Aufgabe</dt><dt lang="en">Role</dt>
+          <dd lang="de">Data Engineering, Analytics oder BI, gern nah an Supply Chain, Produktion oder Operations</dd>
+          <dd lang="en">Data engineering, analytics or BI, ideally close to supply chain, production or operations</dd></div>
+        <div><dt lang="de">Ort</dt><dt lang="en">Location</dt>
+          <dd lang="de">Berlin vor Ort, Raum Köln oder remote</dd>
+          <dd lang="en">On-site in Berlin, Cologne area or remote</dd></div>
+        <div><dt lang="de">Umfang</dt><dt lang="en">Hours</dt>
+          <dd lang="de">Voll- oder Teilzeit</dd>
+          <dd lang="en">Full-time or part-time</dd></div>
+        <div><dt lang="de">Start</dt><dt lang="en">Start</dt>
+          <dd lang="de">ab sofort</dd>
+          <dd lang="en">Available now</dd></div>
+      </dl>
+    </aside>
+  </div>
+</section>
+
+<!-- ARBEITSPROBE -->
+<section class="samples" id="arbeitsprobe">
+  <div class="wrap">
+    <div class="prose">
+      <h2><span lang="de">Arbeitsprobe: der Markt für pflanzliche Lebensmittel</span><span lang="en">Work sample: the plant-based food market</span></h2>
+      <p lang="de">Für meine Bewerbungen habe ich mir angesehen, wie sich pflanzliche Alternativen in Deutschland entwickeln, mit Daten von GFI Europe, ProVeg, BLE und Destatis. Auffällig ist, dass <strong>veganer Käse als einziges großes Segment Umsatz verliert</strong>, während der Käsekonsum in Deutschland so hoch ist wie nie.</p>
+      <p lang="en">For my applications I looked at how plant-based alternatives are developing in Germany, using data from GFI Europe, ProVeg, BLE and Destatis. One thing stands out: <strong>vegan cheese is the only major segment losing sales</strong>, even though cheese consumption in Germany is at a record high.</p>
+      <p class="note" lang="de">Das Dashboard ist mit Claude als Werkzeug entstanden.</p>
+      <p class="note" lang="en">I built the dashboard using Claude as a tool.</p>
+      <p><a class="btn light" href="projekte/markt-dashboard.html" target="_blank" rel="noopener"><span lang="de">Ganzes Dashboard öffnen</span><span lang="en">Open full dashboard</span></a></p>
+    </div>
+
+    <div class="chart">
+      <div class="seg" role="group" data-aria-de="Ansicht wählen" data-aria-en="Choose view" aria-label="Ansicht wählen">
+        <button type="button" data-view="sales" aria-pressed="true"><span lang="de">Umsatz 2024</span><span lang="en">Sales 2024</span></button>
+        <button type="button" data-view="trend" aria-pressed="false"><span lang="de">Fleisch und Alternativen</span><span lang="en">Meat and alternatives</span></button>
+      </div>
+      <h3 id="chartTitle"></h3>
+      <svg id="chartSvg" viewBox="0 0 640 300" role="group" aria-labelledby="chartTitle"></svg>
+      <p class="readout" id="chartReadout" aria-live="polite"></p>
+      <p class="cap" id="chartCap"></p>
+    </div>
+  </div>
+</section>
+
+<!-- EIGENE PROJEKTE -->
+<section class="projects" id="projekte">
+  <div class="wrap">
+    <h2><span lang="de">Eigene Projekte</span><span lang="en">Side projects</span></h2>
+
+    <article class="feature">
+      <div class="gallery">
+        <button class="shot tall" type="button" data-src="assets/img/ki-studio-1.jpg" data-alt-de="Handy-Oberfläche der KI-App" data-alt-en="Phone interface of the AI app"></button>
+        <div class="thumbs">
+          <button class="shot" type="button" data-src="assets/img/ki-studio-2.jpg" data-alt-de="Generiertes Video" data-alt-en="Generated video"></button>
+          <button class="shot" type="button" data-src="assets/img/ki-studio-3.jpg" data-alt-de="Aufbau der Anwendung" data-alt-en="How the app is set up"></button>
+        </div>
+      </div>
+      <div class="prose">
+        <h3><span lang="de">KI vom Handy aus nutzen</span><span lang="en">Using AI from my phone</span></h3>
+        <p lang="de">Ich wollte KI-Modelle auch nutzen, wenn ich nicht am Schreibtisch sitze, zum Beispiel beim Sport. Deshalb läuft auf meinem Rechner zu Hause eine <strong>FastAPI-Anwendung in Docker</strong>, die ich vom Smartphone aus anspreche. Sie startet Videogenerierung über ComfyUI und MiniMax, schickt Fragen an Claude und nimmt Sprache entgegen: Whisper macht aus dem Gesprochenen Text, die Antwort wird vorgelesen.</p>
+        <p lang="en">I wanted to use AI models away from my desk too, for example while working out. So my home PC runs a <strong>FastAPI application in Docker</strong> that I talk to from my phone. It starts video generation via ComfyUI and MiniMax, sends questions to Claude and takes voice input: Whisper turns speech into text, and the answer is read back to me.</p>
+        <p class="stack">Python, FastAPI, Docker, ComfyUI, MiniMax, Claude, Whisper</p>
+      </div>
+    </article>
+
+    <div class="pair">
+      <article>
+        <div class="gallery">
+          <button class="shot" type="button" data-src="assets/img/dungeon-1.jpg" data-alt-de="Spielszene aus dem Dungeon Crawler" data-alt-en="Gameplay from the dungeon crawler"></button>
+          <div class="thumbs">
+            <button class="shot" type="button" data-src="assets/img/dungeon-2.jpg" data-alt-de="Dungeon-Ansicht" data-alt-en="Dungeon view"></button>
+            <button class="shot" type="button" data-src="assets/img/dungeon-3.jpg" data-alt-de="Weitere Spielszene" data-alt-en="Another scene"></button>
+          </div>
+        </div>
+        <div class="prose">
+          <h3><span lang="de">Ein eigenes 3D-Spiel</span><span lang="en">My own 3D game</span></h3>
+          <!-- Hier gern Engine/Sprache ergänzen, z. B. „Gebaut mit Godot.“ -->
+          <p lang="de">Ein 3D-Dungeon-Crawler nach dem Roguelike-Prinzip, gerade in der <strong>Alpha</strong>.</p>
+          <p lang="en">A 3D roguelike dungeon crawler, currently in <strong>alpha</strong>.</p>
+        </div>
+      </article>
+
+      <article>
+        <div class="gallery">
+          <button class="shot" type="button" data-src="assets/img/dmx-1.jpg" data-alt-de="Diskokugel-Installation auf der Bühne" data-alt-en="Mirror-ball installation on stage"></button>
+          <div class="thumbs">
+            <button class="shot" type="button" data-src="assets/img/dmx-2.jpg" data-alt-de="Aufbau und Verkabelung" data-alt-en="Build and wiring"></button>
+            <button class="shot" type="button" data-src="assets/img/dmx-3.jpg" data-alt-de="DMX-Steuerung" data-alt-en="DMX control"></button>
+          </div>
+        </div>
+        <div class="prose">
+          <h3><span lang="de">Diskokugeln für eine Festivalbühne</span><span lang="en">Mirror balls for a festival stage</span></h3>
+          <p lang="de">Die Kugeln sitzen auf höhenverstellbaren Tischbeinen und drehen sich über eigene Motoren. Ich habe alles <strong>selbst verkabelt und programmiert</strong>, gesteuert wird über DMX.</p>
+          <p lang="en">The balls sit on height-adjustable table legs and each rotate on their own motor. I <strong>wired and programmed it myself</strong>; everything runs over DMX.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- WERDEGANG -->
+<section id="werdegang">
+  <div class="wrap">
+    <h2><span lang="de">Werdegang</span><span lang="en">Experience</span></h2>
+    <ol class="timeline">
+      <li class="now">
+        <p class="when"><span lang="de">seit 01/2026</span><span lang="en">since 01/2026</span></p>
+        <h3><span lang="de">Auszeit und Neuorientierung</span><span lang="en">Career break and reorientation</span></h3>
+        <p class="org">Berlin</p>
+        <p class="sum" lang="de">Umzug nach Berlin, eigene Software- und Hardwareprojekte, Ehrenamt bei der Tafel.</p>
+        <p class="sum" lang="en">Moved to Berlin, built my own software and hardware projects, volunteered at a food bank.</p>
+      </li>
+      <li>
+        <p class="when">06/2021 – 12/2025</p>
+        <h3><span lang="de">Lead Data Engineer, vorher Business Analyst</span><span lang="en">Lead Data Engineer, previously Business Analyst</span></h3>
+        <p class="org">Capgemini Deutschland, Köln</p>
+        <p class="sum" lang="de">Daten- und KI-Projekte für die Konsumgüterindustrie und die Luftfahrt. Beförderung zum Lead Data Engineer im Oktober 2022.</p>
+        <p class="sum" lang="en">Data and AI projects for the consumer-goods and aviation industries. Promoted to Lead Data Engineer in October 2022.</p>
+        <details open>
+          <summary><span lang="de">Aufgaben und Stack</span><span lang="en">Tasks and stack</span></summary>
+          <ul lang="de">
+            <li><strong>Technische Teamleitung</strong> einer Backend- und API-Plattform zur Analyse und Optimierung des CO₂-Fußabdrucks in der Konsumgüterindustrie (Python, FastAPI, Neo4j, PostgreSQL, Azure, Docker, Kubernetes)</li>
+            <li>Als Technical Solution Lead Lösungskonzepte und Aufwandsschätzungen für Angebote erstellt</li>
+            <li>KI-Anwendungen mit LangChain (LLM-Anbindung, Vector Search, RAG) und Graph-Analysen mit Neo4j Graph Data Science</li>
+            <li><strong>SAP-Massendaten</strong> aus Instandhaltung und Beschaffung in der Luftfahrt testgetrieben zu Datenprodukten aufbereitet (Python, PySpark, Parquet, pytest, Jenkins, Airflow)</li>
+            <li>Neo4j Certified Developer seit 09/2022</li>
+          </ul>
+          <ul lang="en">
+            <li><strong>Technical team lead</strong> for a backend and API platform for analysing and reducing carbon footprints in the consumer-goods industry (Python, FastAPI, Neo4j, PostgreSQL, Azure, Docker, Kubernetes)</li>
+            <li>As technical solution lead, wrote solution concepts and effort estimates for bids</li>
+            <li>AI applications with LangChain (LLM integration, vector search, RAG) and graph analytics with Neo4j Graph Data Science</li>
+            <li>Turned <strong>SAP big data</strong> from aviation maintenance and procurement into data products, test-driven (Python, PySpark, Parquet, pytest, Jenkins, Airflow)</li>
+            <li>Neo4j Certified Developer since 09/2022</li>
+          </ul>
+        </details>
+      </li>
+      <li>
+        <p class="when">10/2017 – 06/2020</p>
+        <h3><span lang="de">M.Sc. BWL, Operations Research und Management</span><span lang="en">M.Sc. Business Administration, Operations Research and Management</span></h3>
+        <p class="org">RWTH Aachen</p>
+        <p class="sum" lang="de">Masterarbeit: Lebenszyklusanalyse des Kunststoffrecyclings in NRW.</p>
+        <p class="sum" lang="en">Thesis: life-cycle assessment of plastics recycling in North Rhine-Westphalia.</p>
+        <details>
+          <summary><span lang="de">Case Study und Tutorium</span><span lang="en">Case study and tutoring</span></summary>
+          <ul lang="de">
+            <li><strong>Case Study mit Deutsche Post DHL</strong> (10/2017 – 02/2018): Überlastung der Paketzentren in der Eingangssortierung zur Weihnachtszeit, lineares Optimierungsmodell in Python und AIMMS, gelöst mit Gurobi</li>
+            <li>Tutor am Lehrstuhl für Managementwissenschaft (04/2017 – 04/2019): wöchentlich Vorlesungsinhalte präsentiert, Übungen geleitet, Abschlussprüfungen korrigiert, Updates der Linux-Lehrstuhlsysteme mit Python automatisiert</li>
+          </ul>
+          <ul lang="en">
+            <li><strong>Case study with Deutsche Post DHL</strong> (10/2017 – 02/2018): overloaded parcel centres in inbound sorting at Christmas, linear optimisation model in Python and AIMMS, solved with Gurobi</li>
+            <li>Tutor at the Chair of Management Science (04/2017 – 04/2019): gave weekly presentations of lecture content, ran exercise classes, marked final exams, automated updates of the chair's Linux systems in Python</li>
+          </ul>
+        </details>
+      </li>
+      <li>
+        <p class="when">10/2014 – 10/2017</p>
+        <h3><span lang="de">B.Sc. BWL</span><span lang="en">B.Sc. Business Administration</span></h3>
+        <p class="org">RWTH Aachen, Shanghai Jiao Tong University</p>
+        <p class="sum" lang="de">Auslandssemester in Shanghai, Dean's List (beste 5 % des Jahrgangs). Bachelorarbeit über Online-Dial-a-Ride-Algorithmen, umgesetzt in Python.</p>
+        <p class="sum" lang="en">Semester abroad in Shanghai, Dean's List (top 5% of the cohort). Bachelor's thesis on online dial-a-ride algorithms, implemented in Python.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- WERKZEUGE -->
+<section class="tools">
+  <div class="wrap">
+    <h2><span lang="de">Werkzeuge</span><span lang="en">Tools</span></h2>
+    <dl class="toolrow">
+      <div><dt><span lang="de">Daten</span><span lang="en">Data</span></dt><dd>Python, SQL, PySpark, Pandas, Airflow, PostgreSQL, Parquet</dd></div>
+      <div><dt><span lang="de">Graph und KI</span><span lang="en">Graph and AI</span></dt><dd>Neo4j, Cypher, Graph Data Science, LangChain, RAG, Vector Search</dd></div>
+      <div><dt><span lang="de">Backend und Betrieb</span><span lang="en">Backend and operations</span></dt><dd>FastAPI, SQLAlchemy, Docker, Kubernetes, Azure, CI/CD, Jenkins, pytest</dd></div>
+      <div><dt><span lang="de">Analyse und Optimierung</span><span lang="en">Analysis and optimisation</span></dt><dd>Power BI, Tableau, Gurobi, AIMMS, GAMS</dd></div>
+      <div><dt><span lang="de">Sprachen</span><span lang="en">Languages</span></dt><dd lang="de">Deutsch (Muttersprache), Englisch (verhandlungssicher), Mandarin (Grundkenntnisse)</dd><dd lang="en">German (native), English (fluent), Mandarin (basic)</dd></div>
+    </dl>
+    <div class="ai-note prose">
+      <h3><span lang="de">Wie ich KI nutze</span><span lang="en">How I use AI</span></h3>
+      <p lang="de">Ich nutze KI täglich: bei Capgemini zuletzt in RAG-Projekten, heute vor allem in eigenen Projekten. Was sie liefert, prüfe ich. Ich setze sie da ein, wo ich das Ergebnis selbst beurteilen kann.</p>
+      <p lang="en">I use AI daily: at Capgemini on RAG projects, now mainly in my own projects. I check what it produces, and I use it where I can judge the result myself.</p>
+    </div>
+  </div>
+</section>
+
+<!-- KONTAKT -->
+<section class="contact" id="kontakt">
+  <div class="wrap">
+    <h2><span lang="de">Kontakt</span><span lang="en">Contact</span></h2>
+    <a class="mail" href="mailto:maxlohove@proton.me">maxlohove@proton.me</a>
+    <div class="more">
+      <button class="btn" id="copyMail" type="button"><span lang="de">Adresse kopieren</span><span lang="en">Copy address</span></button>
+      <a href="https://github.com/Eodnar" target="_blank" rel="noopener">GitHub</a>
+      <!-- LinkedIn: URL eintragen und Kommentarzeichen entfernen
+      <a href="https://www.linkedin.com/in/DEIN-PROFIL" target="_blank" rel="noopener">LinkedIn</a>
+      -->
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer><div class="wrap">© 2026 Max Lohove</div></footer>
+
+<dialog id="viewer" data-aria-de="Bildbetrachter" data-aria-en="Image viewer" aria-label="Bildbetrachter">
+  <figure class="viewer">
+    <img id="vImg" alt="">
+    <figcaption id="vCap"></figcaption>
+    <button class="vclose" id="vClose" type="button"><span lang="de">Schließen</span><span lang="en">Close</span></button>
+    <button class="vbtn vprev" id="vPrev" type="button" data-aria-de="Vorheriges Bild" data-aria-en="Previous image" aria-label="Vorheriges Bild">&lsaquo;</button>
+    <button class="vbtn vnext" id="vNext" type="button" data-aria-de="Nächstes Bild" data-aria-en="Next image" aria-label="Nächstes Bild">&rsaquo;</button>
+  </figure>
+</dialog>
+
+<script>
+(function(){
+  var root=document.documentElement;
+  function L(){return root.getAttribute("data-lang")||"de"}
+
+  /* ---------- Diagramm (Daten aus projekte/markt-dashboard.html) ---------- */
+  var DATA={
+    sales:{
+      title:{de:"Umsatzveränderung pflanzlicher Segmente in Deutschland, 2024",en:"Change in plant-based retail sales in Germany, 2024"},
+      cap:{de:"Quelle: GFI Europe / Circana",en:"Source: GFI Europe / Circana"},
+      items:[
+        {de:"Fleischalternativen",en:"Meat alternatives",v:4},
+        {de:"Pflanzendrinks",en:"Plant-based drinks",v:3.5},
+        {de:"Veganer Käse",en:"Vegan cheese",v:-16}
+      ]},
+    trend:{
+      title:{de:"Fleischalternativen und Fleischverzehr, Index 2019 = 100",en:"Meat alternatives vs. meat consumption, index 2019 = 100"},
+      cap:{de:"Quellen: Destatis (Produktionswert Fleischersatz), BLE (Fleischverzehr pro Kopf)",en:"Sources: Destatis (meat substitute production value), BLE (meat consumption per capita)"},
+      years:[2019,2020,2021,2022,2023,2024],
+      a:{de:"Fleischalternativen, Produktionswert",en:"Meat alternatives, production value",v:[100,128,163,196,220,237]},
+      b:{de:"Fleischverzehr pro Kopf",en:"Meat consumption per capita",v:[100,97,93,88,86,88]}
+    }
+  };
+  var view="sales", svg=document.getElementById("chartSvg"), readout=document.getElementById("chartReadout");
+  var NS="http://www.w3.org/2000/svg";
+  function el(n,a,p){var e=document.createElementNS(NS,n);for(var k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e}
+  function fmt(v){var n=String(Math.abs(v)).replace(".",L()==="de"?",":".");return (v<0?"−":"+")+n+(L()==="de"?" %":"%")}
+  function drawSales(){
+    var d=DATA.sales, W=640, left=170, right=60, max=20, x0=left+(W-left-right)*(16/(16+max))*0.0;
+    var scale=(W-left-right)/(max+16), zero=left+16*scale, rowH=70, top=20;
+    el("line",{x1:zero,x2:zero,y1:top-6,y2:top+rowH*3,stroke:"rgba(255,255,255,.45)","stroke-width":1},svg);
+    d.items.forEach(function(it,i){
+      var y=top+i*rowH, w=Math.abs(it.v)*scale, neg=it.v<0;
+      var g=el("g",{"class":"bar",tabindex:"0",role:"img","aria-label":it[L()]+": "+fmt(it.v)},svg);
+      el("text",{x:0,y:y+30,"font-size":"16","font-weight":"600"},g).textContent=it[L()];
+      el("rect",{x:neg?zero-w:zero,y:y+8,width:w,height:34,rx:4,fill:neg?"#ec8bb1":"#e4ece8"},g);
+      var t=el("text",{x:neg?zero-w-8:zero+w+8,y:y+31,"font-size":"16","font-weight":"700","text-anchor":neg?"end":"start"},g);
+      t.textContent=fmt(it.v);
+      if(neg){t.setAttribute("x",zero-w+10);t.setAttribute("text-anchor","start");t.setAttribute("style","fill:#2a0f1c")}
+      function on(){readout.textContent=it[L()]+": "+fmt(it.v)+(neg?(L()==="de"?", das einzige große Segment im Minus":", the only major segment in decline"):"")}
+      g.addEventListener("mouseenter",on);g.addEventListener("focus",on);
+    });
+    svg.setAttribute("viewBox","0 0 640 "+(top+rowH*3+4));
+  }
+  function drawTrend(){
+    var d=DATA.trend, W=640, H=300, l=44, r=20, t=16, b=36, min=60, max=250;
+    function X(i){return l+i*(W-l-r)/(d.years.length-1)}
+    function Y(v){return t+(max-v)*(H-t-b)/(max-min)}
+    [100,150,200,250].forEach(function(v){
+      el("line",{x1:l,x2:W-r,y1:Y(v),y2:Y(v),stroke:"rgba(255,255,255,"+(v===100?".45":".14")+")"},svg);
+      el("text",{x:l-8,y:Y(v)+5,"font-size":"13","text-anchor":"end",opacity:".75"},svg).textContent=v;
+    });
+    d.years.forEach(function(y,i){el("text",{x:X(i),y:H-10,"font-size":"13","text-anchor":"middle",opacity:".75"},svg).textContent=y});
+    [["a","#e4ece8"],["b","#ec8bb1"]].forEach(function(s){
+      var ser=d[s[0]], pts=ser.v.map(function(v,i){return X(i)+","+Y(v)}).join(" ");
+      el("polyline",{points:pts,fill:"none",stroke:s[1],"stroke-width":3,"stroke-linejoin":"round"},svg);
+      ser.v.forEach(function(v,i){
+        var g=el("g",{"class":"bar",tabindex:"0",role:"img","aria-label":ser[L()]+" "+d.years[i]+": "+v},svg);
+        el("circle",{cx:X(i),cy:Y(v),r:6,fill:s[1]},g);
+        function on(){readout.textContent=ser[L()]+", "+d.years[i]+": "+v}
+        g.addEventListener("mouseenter",on);g.addEventListener("focus",on);
+      });
+      var lv=ser.v[ser.v.length-1];
+      el("text",{x:W-r,y:Y(lv)+(s[0]==="a"?-14:24),"font-size":"14","font-weight":"600","text-anchor":"end"},svg).textContent=ser[L()];
+    });
+    svg.setAttribute("viewBox","0 0 640 300");
+  }
+  function drawChart(){
+    while(svg.firstChild)svg.removeChild(svg.firstChild);
+    readout.textContent="";
+    var d=DATA[view];
+    document.getElementById("chartTitle").textContent=d.title[L()];
+    document.getElementById("chartCap").textContent=d.cap[L()];
+    view==="sales"?drawSales():drawTrend();
+    document.querySelectorAll(".seg button").forEach(function(b){b.setAttribute("aria-pressed",String(b.getAttribute("data-view")===view))});
+  }
+  document.querySelectorAll(".seg button").forEach(function(b){b.addEventListener("click",function(){view=b.getAttribute("data-view");drawChart()})});
+
+  /* ---------- Sprache ---------- */
+  function setLang(l){
+    root.setAttribute("data-lang",l); root.lang=l;
+    try{localStorage.setItem("lang",l)}catch(e){}
+    document.querySelectorAll("[data-alt-"+l+"]").forEach(function(n){var t=n.getAttribute("data-alt-"+l); if(n.tagName==="IMG")n.alt=t; else {var i=n.querySelector("img"); if(i)i.alt=t}});
+    document.querySelectorAll("[data-aria-"+l+"]").forEach(function(n){n.setAttribute("aria-label",n.getAttribute("data-aria-"+l))});
+    drawChart();
+  }
+  document.getElementById("langBtn").addEventListener("click",function(){setLang(L()==="de"?"en":"de")});
+
+  /* ---------- Bilder: fehlende Dateien werden ausgeblendet ---------- */
+  document.querySelectorAll(".shot").forEach(function(b){
+    var img=new Image(); img.loading="lazy"; img.alt=b.getAttribute("data-alt-"+L())||"";
+    img.onload=function(){b.classList.add("ok")};
+    img.onerror=function(){
+      var g=b.closest(".gallery"); b.remove();
+      if(g && !g.querySelector(".shot")){var art=g.closest("article"); g.remove(); if(art && art.classList.contains("feature")) art.classList.add("no-media");}
+    };
+    img.src=b.getAttribute("data-src"); b.appendChild(img);
+  });
+
+  /* ---------- Bildbetrachter ---------- */
+  var dlg=document.getElementById("viewer"), vImg=document.getElementById("vImg"), vCap=document.getElementById("vCap"), list=[], idx=0;
+  function show(){var b=list[idx], t=b.getAttribute("data-alt-"+L())||""; vImg.src=b.getAttribute("data-src"); vImg.alt=t; vCap.textContent=t;
+    document.getElementById("vPrev").hidden=document.getElementById("vNext").hidden=list.length<2;
+    if(list.length>1){var n=new Image(); n.src=list[(idx+1)%list.length].getAttribute("data-src")}}
+  document.querySelectorAll(".gallery").forEach(function(g){
+    g.addEventListener("click",function(e){
+      var b=e.target.closest(".shot"); if(!b||!b.classList.contains("ok"))return;
+      list=[].slice.call(g.querySelectorAll(".shot.ok")); idx=list.indexOf(b); show();
+      if(dlg.showModal){dlg.showModal(); document.body.style.overflow="hidden"}
+    });
+  });
+  dlg.addEventListener("close",function(){document.body.style.overflow=""});
+  document.getElementById("vPrev").onclick=function(){idx=(idx-1+list.length)%list.length;show()};
+  document.getElementById("vNext").onclick=function(){idx=(idx+1)%list.length;show()};
+  document.getElementById("vClose").onclick=function(){dlg.close()};
+  dlg.addEventListener("click",function(e){if(e.target===dlg)dlg.close()});
+  document.addEventListener("keydown",function(e){if(!dlg.open)return; if(e.key==="ArrowRight")document.getElementById("vNext").click(); if(e.key==="ArrowLeft")document.getElementById("vPrev").click()});
+
+  /* ---------- E-Mail kopieren ---------- */
+  var cb=document.getElementById("copyMail");
+  cb.addEventListener("click",function(){
+    var done=function(){var s=cb.querySelectorAll("span"); var old=[s[0].textContent,s[1].textContent]; s[0].textContent="Kopiert"; s[1].textContent="Copied"; setTimeout(function(){s[0].textContent=old[0]; s[1].textContent=old[1]},2000)};
+    if(navigator.clipboard){navigator.clipboard.writeText("maxlohove@proton.me").then(done,function(){})}
+  });
+
+  var saved=null; try{saved=localStorage.getItem("lang")}catch(e){}
+  setLang(saved||((navigator.language||"de").slice(0,2)==="de"?"de":"en"));
+})();
+</script>
+</body>
+</html>
