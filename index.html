@@ -122,6 +122,10 @@ h3{font-size:1.35rem;line-height:1.25;letter-spacing:-.01em;font-weight:700}
 .projects{background:var(--surface);border-top:1px solid var(--line)}
 .feature{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,6fr);gap:48px;align-items:start;margin-bottom:var(--s5)}
 .pair{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+.feature.voice{margin:var(--s5) 0 0}
+.feature.voice .shot{aspect-ratio:auto;box-shadow:0 0 0 1px var(--line)}
+.feature.voice .shot img{height:auto}
+.feature.voice .thumbs{grid-template-columns:1fr}
 .feature h3{font-size:1.6rem;margin-bottom:14px}
 .pair h3{margin-bottom:10px}
 .gallery + .prose h3{margin-top:22px}
@@ -282,17 +286,19 @@ dialog::backdrop{background:rgba(12,22,20,.82)}
     <div class="pair">
       <article>
         <div class="gallery">
-          <button class="shot" type="button" data-src="assets/img/dungeon-1.jpg" data-alt-de="Spielszene aus dem Dungeon Crawler" data-alt-en="Gameplay from the dungeon crawler"></button>
+          <button class="shot" type="button" data-src="assets/img/dungeon-1.jpg" data-alt-de="Root Raider: Der Käfer des Spielers kämpft auf der ersten Ebene gegen mehrere Insekten, mit Schadenszahlen und Lebensbalken" data-alt-en="Root Raider: the player's beetle fighting several insects on the first floor, with damage numbers and health bars"></button>
           <div class="thumbs">
-            <button class="shot" type="button" data-src="assets/img/dungeon-2.jpg" data-alt-de="Dungeon-Ansicht" data-alt-en="Dungeon view"></button>
-            <button class="shot" type="button" data-src="assets/img/dungeon-3.jpg" data-alt-de="Weitere Spielszene" data-alt-en="Another scene"></button>
+            <button class="shot" type="button" data-src="assets/img/dungeon-2.jpg" data-alt-de="Startbildschirm von Root Raider mit Menü und drehbarem Käfermodell" data-alt-en="Root Raider start screen with the menu and a beetle model you can turn"></button>
+            <button class="shot" type="button" data-src="assets/img/dungeon-3.jpg" data-alt-de="Kampf auf der zweiten Ebene, einem dunklen Raum mit leuchtenden Wurzeln" data-alt-en="A fight on the second floor, a dark room lit by glowing roots"></button>
+            <button class="shot" type="button" data-src="assets/img/dungeon-4.jpg" data-alt-de="Das Käfermodell des Spielers mit Rig im Animations-Arbeitsbereich von Blender" data-alt-en="The player's beetle model and its rig in Blender's animation workspace"></button>
+            <button class="shot" type="button" data-src="assets/img/dungeon-5.jpg" data-alt-de="Gegnermodell Mothling in Blender" data-alt-en="The Mothling enemy model in Blender"></button>
           </div>
         </div>
         <div class="prose">
           <h3><span lang="de">Root Raider, ein 3D-Spiel</span><span lang="en">Root Raider, a 3D game</span></h3>
           <p lang="de">Ein 3D-Dungeon-Crawler nach dem Roguelike-Prinzip, gerade in der <strong>Alpha</strong>. Man kämpft sich durch Räume, die über Portale verbunden sind, sammelt Waffen und Verbesserungen und besiegt am Ende jedes Levels einen Boss. Gebaut mit <strong>Godot 4 und GDScript</strong>, zusammen mit einem zweiten Entwickler. Dazu gehören Koop-Lobbys für bis zu vier Spieler über Steam.</p>
           <p lang="en">A 3D roguelike dungeon crawler, currently in <strong>alpha</strong>. You fight through rooms connected by portals, collect weapons and upgrades, and beat a boss at the end of each level. Built with <strong>Godot 4 and GDScript</strong>, together with a second developer. It includes co-op lobbies for up to four players over Steam.</p>
-          <p class="stack">Godot 4, GDScript, GodotSteam</p>
+          <p class="stack">Godot 4, GDScript, GodotSteam, Blender</p>
         </div>
       </article>
 
@@ -314,6 +320,23 @@ dialog::backdrop{background:rgba(12,22,20,.82)}
         </div>
       </article>
     </div>
+
+    <article class="feature voice">
+      <div class="gallery">
+        <button class="shot" type="button" data-src="assets/img/voice-1.jpg" data-alt-de="Dashboard von claude-voice: Eine Antwort wird gerade vorgelesen, darunter Fortschritt, Warteschlange und Kennzahlen zur Synthese" data-alt-en="claude-voice dashboard: an answer is being read aloud, with progress, the queue and synthesis figures below"></button>
+        <div class="thumbs">
+          <button class="shot" type="button" data-src="assets/img/voice-2.jpg" data-alt-de="Archiv der Aufnahmen mit englischen und deutschen Clips, jeweils zum Abspielen, Herunterladen und Löschen" data-alt-en="The recordings archive with English and German clips, each with play, download and delete"></button>
+        </div>
+      </div>
+      <div class="prose">
+        <h3><span lang="de">Claude Code liest vor</span><span lang="en">Claude Code, read aloud</span></h3>
+        <p lang="de">Wenn ich Claude Code eine längere Aufgabe gebe, will ich nicht die ganze Zeit auf den Bildschirm schauen. Ein <strong>Hook</strong> schickt deshalb jede fertige Antwort an einen kleinen <strong>FastAPI-Server</strong>, der sie mit dem Sprachmodell Kokoro-82M vorliest, lokal und ohne Cloud. Deutsche Antworten erkennt er selbst und nimmt dafür eine deutsche Stimme.</p>
+        <p lang="de">Die Antworten laufen über eine Warteschlange, damit sich nichts überschneidet. Im Browser-Dashboard sehe ich, was gerade gesprochen wird, kann pausieren oder überspringen und ältere Clips noch einmal abspielen. Rund 150 Tests decken Warteschlange, Archiv, Spracherkennung und den Kaltstart des Servers ab.</p>
+        <p lang="en">When I give Claude Code a longer task, I don't want to watch the screen the whole time. So a <strong>hook</strong> sends every finished answer to a small <strong>FastAPI server</strong> that reads it aloud with the Kokoro-82M speech model, locally and without a cloud service. It detects German answers on its own and switches to a German voice.</p>
+        <p lang="en">Answers go through a queue so nothing talks over anything else. A browser dashboard shows what is being spoken, lets me pause or skip, and replays older clips. About 150 tests cover the queue, the archive, language detection and the server's cold start.</p>
+        <p class="stack">Python, FastAPI, Uvicorn, Pydantic, Kokoro-82M, pytest, uv</p>
+      </div>
+    </article>
   </div>
 </section>
 
