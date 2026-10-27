@@ -114,7 +114,7 @@ h3{font-size:1.35rem;line-height:1.25;letter-spacing:-.01em;font-weight:700}
 .chart svg{width:100%;height:auto;display:block;margin-top:var(--s2);overflow:visible}
 .chart svg text{font-family:inherit;fill:var(--petrol-ink)}
 .chart .bar:focus{outline:none}
-.chart .bar:focus rect,.chart .bar:hover rect{stroke:#fff;stroke-width:2}
+.chart .bar:focus path,.chart .bar:hover path{stroke:#fff;stroke-width:2}
 .chart .readout{min-height:1.6em;margin-top:var(--s1);font-weight:600;color:#fff}
 @media (max-width:860px){.samples .wrap{grid-template-columns:1fr;gap:var(--s4)}}
 
@@ -345,8 +345,8 @@ dialog::backdrop{background:rgba(12,22,20,.82)}
   <div class="wrap">
     <div class="prose">
       <h2><span lang="de">Arbeitsprobe: Marktanalyse mit offenen Daten</span><span lang="en">Work sample: a market analysis with public data</span></h2>
-      <p lang="de">Als Beispiel dafür, wie ich an eine Analyse herangehe, habe ich mir angesehen, wie sich pflanzliche Alternativen in Deutschland entwickeln, mit Daten von GFI Europe, ProVeg, BLE und Destatis. Auffällig ist, dass <strong>veganer Käse als einziges großes Segment Umsatz verliert</strong>, während der Käsekonsum in Deutschland so hoch ist wie nie.</p>
-      <p lang="en">As an example of how I approach an analysis, I looked at how plant-based alternatives are developing in Germany, using data from GFI Europe, ProVeg, BLE and Destatis. One thing stands out: <strong>vegan cheese is the only major segment losing sales</strong>, even though cheese consumption in Germany is at a record high.</p>
+      <p lang="de">Als Beispiel dafür, wie ich an eine Analyse herangehe, habe ich die Studie „Alternative Milchprodukte“ von Agora Agrar, DLG und Universität Hohenheim (2026) ausgewertet und daraus ein Dashboard gebaut: Absatz, Umsatz, Preise und Szenarien bis 2035. Auffällig ist <strong>Käse</strong>. Der Preisabstand zum tierischen Käse hat sich mehr als halbiert, trotzdem ist es das schwächste Segment. Der Engpass liegt eher in der Technik als im Preis.</p>
+      <p lang="en">As an example of how I approach an analysis, I worked through the study “Alternative Milchprodukte” by Agora Agrar, DLG and the University of Hohenheim (2026) and built a dashboard from it: volume, revenue, prices and scenarios to 2035. <strong>Cheese</strong> stands out. Its price gap to dairy cheese more than halved, yet it is still the weakest segment. The bottleneck is the technology more than the price.</p>
       <p class="note" lang="de">Das Dashboard ist mit Claude als Werkzeug entstanden.</p>
       <p class="note" lang="en">I built the dashboard using Claude as a tool.</p>
       <p><a class="btn light" href="projekte/markt-dashboard.html" target="_blank" rel="noopener"><span lang="de">Ganzes Dashboard öffnen</span><span lang="en">Open full dashboard</span></a></p>
@@ -354,8 +354,8 @@ dialog::backdrop{background:rgba(12,22,20,.82)}
 
     <div class="chart">
       <div class="seg" role="group" data-aria-de="Ansicht wählen" data-aria-en="Choose view" aria-label="Ansicht wählen">
-        <button type="button" data-view="sales" aria-pressed="true"><span lang="de">Umsatz 2024</span><span lang="en">Sales 2024</span></button>
-        <button type="button" data-view="trend" aria-pressed="false"><span lang="de">Fleisch und Alternativen</span><span lang="en">Meat and alternatives</span></button>
+        <button type="button" data-view="sales" aria-pressed="true"><span lang="de">Umsatz 2025</span><span lang="en">Revenue 2025</span></button>
+        <button type="button" data-view="price" aria-pressed="false"><span lang="de">Preisabstand</span><span lang="en">Price gap</span></button>
       </div>
       <h3 id="chartTitle"></h3>
       <svg id="chartSvg" viewBox="0 0 640 300" role="group" aria-labelledby="chartTitle"></svg>
@@ -525,67 +525,62 @@ dialog::backdrop{background:rgba(12,22,20,.82)}
   var root=document.documentElement;
   function L(){return root.getAttribute("data-lang")||"de"}
 
-  /* ---------- Diagramm (Daten aus projekte/markt-dashboard.html) ---------- */
+  /* ---------- Diagramm (Daten aus projekte/markt-dashboard.html, Studie Agora Agrar 2026) ---------- */
   var DATA={
     sales:{
-      title:{de:"Umsatzveränderung pflanzlicher Segmente in Deutschland, 2024",en:"Change in plant-based retail sales in Germany, 2024"},
-      cap:{de:"Quelle: GFI Europe / Circana",en:"Source: GFI Europe / Circana"},
+      title:{de:"Umsatz mit pflanzlichen Alternativen in Deutschland, 2025",en:"Revenue from plant-based alternatives in Germany, 2025"},
+      cap:{de:"In Mio. €, Lebensmittelhandel. Quelle: GFI (2026), zitiert in Agora Agrar, DLG, Universität Hohenheim (2026)",en:"In € million, food retail. Source: GFI (2026), cited in Agora Agrar, DLG, University of Hohenheim (2026)"},
       items:[
-        {de:"Fleischalternativen",en:"Meat alternatives",v:4},
-        {de:"Pflanzendrinks",en:"Plant-based drinks",v:3.5},
-        {de:"Veganer Käse",en:"Vegan cheese",v:-16}
+        {de:"Milch",en:"Milk",v:632},
+        {de:"Joghurt",en:"Yogurt",v:174},
+        {de:"Käse",en:"Cheese",v:85,hi:true},
+        {de:"Sahne",en:"Cream",v:53}
       ]},
-    trend:{
-      title:{de:"Fleischalternativen und Fleischverzehr, Index 2019 = 100",en:"Meat alternatives vs. meat consumption, index 2019 = 100"},
-      cap:{de:"Quellen: Destatis (Produktionswert Fleischersatz), BLE (Fleischverzehr pro Kopf)",en:"Sources: Destatis (meat substitute production value), BLE (meat consumption per capita)"},
-      years:[2019,2020,2021,2022,2023,2024],
-      a:{de:"Fleischalternativen, Produktionswert",en:"Meat alternatives, production value",v:[100,128,163,196,220,237]},
-      b:{de:"Fleischverzehr pro Kopf",en:"Meat consumption per capita",v:[100,97,93,88,86,88]}
-    }
+    price:{
+      title:{de:"Mehrpreis pflanzlich gegenüber tierisch",en:"Price premium, plant-based vs. animal"},
+      cap:{de:"Durchschnittspreise im Handel, 2022 und 2024. Quelle: GFI (2025), zitiert in derselben Studie",en:"Average retail prices, 2022 and 2024. Source: GFI (2025), cited in the same study"},
+      items:[
+        {de:"Milch",en:"Milk",v:[27,13]},
+        {de:"Joghurt",en:"Yogurt",v:[45,35]},
+        {de:"Käse",en:"Cheese",v:[68,29],hi:true}
+      ]}
   };
   var view="sales", svg=document.getElementById("chartSvg"), readout=document.getElementById("chartReadout");
   var NS="http://www.w3.org/2000/svg";
   function el(n,a,p){var e=document.createElementNS(NS,n);for(var k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e}
-  function fmt(v){var n=String(Math.abs(v)).replace(".",L()==="de"?",":".");return (v<0?"−":"+")+n+(L()==="de"?" %":"%")}
+  function pct(v){return v+(L()==="de"?" %":"%")}
+  /* in echter Breite zeichnen, damit die Schrift auf dem Handy nicht schrumpft */
+  function chartW(){return Math.max(280,Math.round(svg.parentNode.clientWidth-48))}
+  function eur(v){return L()==="de"?v+" Mio. €":"€"+v+" million"}
+  /* liegende Balken; Käse in Rote Bete, der Rest hell */
+  function bar(g,x,y,w,h,fill){el("path",{d:"M"+x+","+y+"h"+(w-4)+"q4,0 4,4v"+(h-8)+"q0,4 -4,4h"+(-(w-4))+"z",fill:fill},g)}
   function drawSales(){
-    var d=DATA.sales, W=640, left=170, right=60, max=20, x0=left+(W-left-right)*(16/(16+max))*0.0;
-    var scale=(W-left-right)/(max+16), zero=left+16*scale, rowH=70, top=20;
-    el("line",{x1:zero,x2:zero,y1:top-6,y2:top+rowH*3,stroke:"rgba(255,255,255,.45)","stroke-width":1},svg);
+    var d=DATA.sales, W=chartW(), left=W<480?76:110, right=56, rowH=58, top=6, sc=(W-left-right)/700;
     d.items.forEach(function(it,i){
-      var y=top+i*rowH, w=Math.abs(it.v)*scale, neg=it.v<0;
-      var g=el("g",{"class":"bar",tabindex:"0",role:"img","aria-label":it[L()]+": "+fmt(it.v)},svg);
-      el("text",{x:0,y:y+30,"font-size":"16","font-weight":"600"},g).textContent=it[L()];
-      el("rect",{x:neg?zero-w:zero,y:y+8,width:w,height:34,rx:4,fill:neg?"#ec8bb1":"#e4ece8"},g);
-      var t=el("text",{x:neg?zero-w-8:zero+w+8,y:y+31,"font-size":"16","font-weight":"700","text-anchor":neg?"end":"start"},g);
-      t.textContent=fmt(it.v);
-      if(neg){t.setAttribute("x",zero-w+10);t.setAttribute("text-anchor","start");t.setAttribute("style","fill:#2a0f1c")}
-      function on(){readout.textContent=it[L()]+": "+fmt(it.v)+(neg?(L()==="de"?", das einzige große Segment im Minus":", the only major segment in decline"):"")}
+      var y=top+i*rowH, w=it.v*sc;
+      var g=el("g",{"class":"bar",tabindex:"0",role:"img","aria-label":it[L()]+": "+eur(it.v)},svg);
+      el("text",{x:0,y:y+29,"font-size":"15","font-weight":it.hi?"700":"500"},g).textContent=it[L()];
+      bar(g,left,y+10,w,30,it.hi?"#ec8bb1":"#e4ece8");
+      el("text",{x:left+w+10,y:y+31,"font-size":"15","font-weight":"700"},g).textContent=it.v;
+      function on(){readout.textContent=it[L()]+": "+eur(it.v)+(it.hi?(L()==="de"?", Absatz zuletzt leicht rückläufig":", volume slightly down recently"):"")}
       g.addEventListener("mouseenter",on);g.addEventListener("focus",on);
     });
-    svg.setAttribute("viewBox","0 0 640 "+(top+rowH*3+4));
+    svg.setAttribute("viewBox","0 0 "+W+" "+(top+rowH*d.items.length));
   }
-  function drawTrend(){
-    var d=DATA.trend, W=640, H=300, l=44, r=20, t=16, b=36, min=60, max=250;
-    function X(i){return l+i*(W-l-r)/(d.years.length-1)}
-    function Y(v){return t+(max-v)*(H-t-b)/(max-min)}
-    [100,150,200,250].forEach(function(v){
-      el("line",{x1:l,x2:W-r,y1:Y(v),y2:Y(v),stroke:"rgba(255,255,255,"+(v===100?".45":".14")+")"},svg);
-      el("text",{x:l-8,y:Y(v)+5,"font-size":"13","text-anchor":"end",opacity:".75"},svg).textContent=v;
+  function drawPrice(){
+    var d=DATA.price, W=chartW(), left=W<480?76:110, right=W<480?84:100, rowH=76, top=6, sc=(W-left-right)/80;
+    d.items.forEach(function(it,i){
+      var y=top+i*rowH;
+      var g=el("g",{"class":"bar",tabindex:"0",role:"img","aria-label":it[L()]+": 2022 "+pct(it.v[0])+", 2024 "+pct(it.v[1])},svg);
+      el("text",{x:0,y:y+34,"font-size":"15","font-weight":it.hi?"700":"500"},g).textContent=it[L()];
+      bar(g,left,y+8,it.v[0]*sc,24,"rgba(228,236,232,.38)");
+      bar(g,left,y+34,it.v[1]*sc,24,it.hi?"#ec8bb1":"#e4ece8");
+      el("text",{x:left+it.v[0]*sc+10,y:y+26,"font-size":"13",opacity:".8"},g).textContent="2022: "+pct(it.v[0]);
+      el("text",{x:left+it.v[1]*sc+10,y:y+52,"font-size":"15","font-weight":"700"},g).textContent="2024: "+pct(it.v[1]);
+      function on(){readout.textContent=it[L()]+": "+pct(it.v[0])+" → "+pct(it.v[1])}
+      g.addEventListener("mouseenter",on);g.addEventListener("focus",on);
     });
-    d.years.forEach(function(y,i){el("text",{x:X(i),y:H-10,"font-size":"13","text-anchor":"middle",opacity:".75"},svg).textContent=y});
-    [["a","#e4ece8"],["b","#ec8bb1"]].forEach(function(s){
-      var ser=d[s[0]], pts=ser.v.map(function(v,i){return X(i)+","+Y(v)}).join(" ");
-      el("polyline",{points:pts,fill:"none",stroke:s[1],"stroke-width":3,"stroke-linejoin":"round"},svg);
-      ser.v.forEach(function(v,i){
-        var g=el("g",{"class":"bar",tabindex:"0",role:"img","aria-label":ser[L()]+" "+d.years[i]+": "+v},svg);
-        el("circle",{cx:X(i),cy:Y(v),r:6,fill:s[1]},g);
-        function on(){readout.textContent=ser[L()]+", "+d.years[i]+": "+v}
-        g.addEventListener("mouseenter",on);g.addEventListener("focus",on);
-      });
-      var lv=ser.v[ser.v.length-1];
-      el("text",{x:W-r,y:Y(lv)+(s[0]==="a"?-14:24),"font-size":"14","font-weight":"600","text-anchor":"end"},svg).textContent=ser[L()];
-    });
-    svg.setAttribute("viewBox","0 0 640 300");
+    svg.setAttribute("viewBox","0 0 "+W+" "+(top+rowH*d.items.length));
   }
   function drawChart(){
     while(svg.firstChild)svg.removeChild(svg.firstChild);
@@ -593,10 +588,12 @@ dialog::backdrop{background:rgba(12,22,20,.82)}
     var d=DATA[view];
     document.getElementById("chartTitle").textContent=d.title[L()];
     document.getElementById("chartCap").textContent=d.cap[L()];
-    view==="sales"?drawSales():drawTrend();
+    view==="sales"?drawSales():drawPrice();
     document.querySelectorAll(".seg button").forEach(function(b){b.setAttribute("aria-pressed",String(b.getAttribute("data-view")===view))});
   }
   document.querySelectorAll(".seg button").forEach(function(b){b.addEventListener("click",function(){view=b.getAttribute("data-view");drawChart()})});
+  var lastW=window.innerWidth, rt;
+  window.addEventListener("resize",function(){if(window.innerWidth===lastW)return;lastW=window.innerWidth;clearTimeout(rt);rt=setTimeout(drawChart,120)});
 
   /* ---------- Sprache ---------- */
   function setLang(l){
