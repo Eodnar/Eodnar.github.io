@@ -160,15 +160,19 @@ details li{margin-bottom:6px}
 
 /* Werkzeuge */
 .tools{border-top:1px solid var(--line)}
-.toolrow{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--s3);border-top:2px solid var(--ink);padding-top:var(--s3)}
-.toolrow dt{font-weight:700;margin-bottom:6px}
-.toolrow dd{color:var(--muted);font-size:.98rem}
+.toolrow{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s4) var(--s3);border-top:2px solid var(--ink);padding-top:var(--s3)}
+.toolrow dt{font-weight:700;margin-bottom:10px}
+/* Werkzeuge als Chips: Logo in gedämpfter Tinte, Name in Tinte; ohne Logo nur der Name */
+.chips{list-style:none;display:flex;flex-wrap:wrap;gap:8px}
+.chips li{display:inline-flex;align-items:center;gap:7px;min-height:34px;padding:5px 11px;border:1px solid var(--line);border-radius:var(--r);background:var(--surface);font-size:.93rem;line-height:1.2;color:var(--ink)}
+.chips img{width:18px;height:18px;flex:none}
+.logo-note{margin-top:var(--s3);font-size:.85rem;color:var(--muted)}
 .notes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s4);margin-top:var(--s5)}
 .ai-note{max-width:64ch}
 .ai-note h3{margin-bottom:10px}
-@media (max-width:980px){.toolrow{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:var(--s4)}}
+@media (max-width:980px){.toolrow{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:860px){.notes{grid-template-columns:1fr}}
-@media (max-width:560px){.toolrow{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.toolrow{grid-template-columns:1fr}}
 
 /* Kontakt */
 .contact{background:var(--surface);border-top:1px solid var(--line);padding-bottom:var(--s6)}
@@ -467,11 +471,15 @@ dialog::backdrop{background:rgba(12,22,20,.82)}
   <div class="wrap">
     <h2><span lang="de">Werkzeuge</span><span lang="en">Tools</span></h2>
     <dl class="toolrow">
-      <div><dt><span lang="de">Daten</span><span lang="en">Data</span></dt><dd>Python, SQL, PySpark, Pandas, NumPy, Jupyter, Airflow, PostgreSQL, Parquet</dd></div>
-      <div><dt><span lang="de">Graph und KI</span><span lang="en">Graph and AI</span></dt><dd>Neo4j, Cypher, Graph Data Science, LangChain, RAG, Vector Search</dd></div>
-      <div><dt><span lang="de">Backend und Betrieb</span><span lang="en">Backend and operations</span></dt><dd>FastAPI, SQLAlchemy, Pydantic, Alembic, Docker, Kubernetes, Azure, CI/CD, pytest, ruff, uv</dd></div>
-      <div><dt><span lang="de">Analyse und Optimierung</span><span lang="en">Analysis and optimisation</span></dt><dd>Power BI, Tableau, NeoDash, Gurobi, AIMMS, GAMS</dd></div>
+      <div><dt><span lang="de">Daten</span><span lang="en">Data</span></dt><dd><ul class="chips"><li><img src="assets/icons/python.svg" width="18" height="18" alt="" loading="lazy" decoding="async">Python</li><li>SQL</li><li><img src="assets/icons/apachespark.svg" width="18" height="18" alt="" loading="lazy" decoding="async">PySpark</li><li><img src="assets/icons/pandas.svg" width="18" height="18" alt="" loading="lazy" decoding="async">Pandas</li><li><img src="assets/icons/numpy.svg" width="18" height="18" alt="" loading="lazy" decoding="async">NumPy</li><li><img src="assets/icons/jupyter.svg" width="18" height="18" alt="" loading="lazy" decoding="async">Jupyter</li><li><img src="assets/icons/apacheairflow.svg" width="18" height="18" alt="" loading="lazy" decoding="async">Airflow</li><li><img src="assets/icons/postgresql.svg" width="18" height="18" alt="" loading="lazy" decoding="async">PostgreSQL</li><li><img src="assets/icons/apacheparquet.svg" width="18" height="18" alt="" loading="lazy" decoding="async">Parquet</li></ul></dd></div>
+      <div><dt><span lang="de">Graph und KI</span><span lang="en">Graph and AI</span></dt><dd><ul class="chips"><li><img src="assets/icons/neo4j.svg" width="18" height="18" alt="" loading="lazy" decoding="async">Neo4j</li><li>Cypher</li><li>Graph Data Science</li><li><img src="assets/icons/langchain.svg" width="18" height="18" alt="" loading="lazy" decoding="async">LangChain</li><li>RAG</li><li>Vector Search</li></ul></dd></div>
+      <div><dt><span lang="de">Backend</span><span lang="en">Backend</span></dt><dd><ul class="chips"><li><img src="assets/icons/fastapi.svg" width="18" height="18" alt="" loading="lazy" decoding="async">FastAPI</li><li>SQLAlchemy</li><li>SQLModel</li><li><img src="assets/icons/pydantic.svg" width="18" height="18" alt="" loading="lazy" decoding="async">Pydantic</li><li>Alembic</li></ul></dd></div>
+      <div><dt><span lang="de">Betrieb und Teamarbeit</span><span lang="en">Operations and team work</span></dt><dd><ul class="chips"><li><img src="assets/icons/docker.svg" width="18" height="18" alt="" loading="lazy" decoding="async">Docker</li><li><img src="assets/icons/kubernetes.svg" width="18" height="18" alt="" loading="lazy" decoding="async">Kubernetes</li><li><img src="assets/icons/azure.svg" width="18" height="18" alt="" loading="lazy" decoding="async">Azure</li><li><img src="assets/icons/git.svg" width="18" height="18" alt="" loading="lazy" decoding="async">Git</li><li>CI/CD</li><li><img src="assets/icons/jenkins.svg" width="18" height="18" alt="" loading="lazy" decoding="async">Jenkins</li><li><img src="assets/icons/pytest.svg" width="18" height="18" alt="" loading="lazy" decoding="async">pytest</li><li><img src="assets/icons/ruff.svg" width="18" height="18" alt="" loading="lazy" decoding="async">ruff</li><li><img src="assets/icons/uv.svg" width="18" height="18" alt="" loading="lazy" decoding="async">uv</li><li><img src="assets/icons/precommit.svg" width="18" height="18" alt="" loading="lazy" decoding="async">pre-commit</li><li><img src="assets/icons/just.svg" width="18" height="18" alt="" loading="lazy" decoding="async">just</li><li><img src="assets/icons/jira.svg" width="18" height="18" alt="" loading="lazy" decoding="async">Jira</li><li><img src="assets/icons/confluence.svg" width="18" height="18" alt="" loading="lazy" decoding="async">Confluence</li></ul></dd></div>
+      <div><dt><span lang="de">Visualisierung und Optimierung</span><span lang="en">Visualisation and optimisation</span></dt><dd><ul class="chips"><li>Power BI</li><li>Tableau</li><li>NeoDash</li><li>yFiles</li><li><img src="assets/icons/gurobi.svg" width="18" height="18" alt="" loading="lazy" decoding="async">Gurobi</li><li>AIMMS</li><li>GAMS</li></ul></dd></div>
+      <div><dt><span lang="de">Eigene Projekte</span><span lang="en">Own projects</span></dt><dd><ul class="chips"><li><img src="assets/icons/godotengine.svg" width="18" height="18" alt="" loading="lazy" decoding="async">Godot</li><li><img src="assets/icons/blender.svg" width="18" height="18" alt="" loading="lazy" decoding="async">Blender</li><li><img src="assets/icons/cplusplus.svg" width="18" height="18" alt="" loading="lazy" decoding="async">C++</li><li><img src="assets/icons/espressif.svg" width="18" height="18" alt="" loading="lazy" decoding="async">ESP32</li><li><img src="assets/icons/platformio.svg" width="18" height="18" alt="" loading="lazy" decoding="async">PlatformIO</li><li><img src="assets/icons/claude.svg" width="18" height="18" alt="" loading="lazy" decoding="async">Claude Code</li></ul></dd></div>
     </dl>
+    <p class="logo-note" lang="de">Logos von Simple Icons (CC0) und Devicon (MIT). Die Marken gehören ihren Inhabern.</p>
+    <p class="logo-note" lang="en">Logos from Simple Icons (CC0) and Devicon (MIT). Trademarks belong to their owners.</p>
     <div class="notes">
       <div class="ai-note prose">
         <h3><span lang="de">Zertifikate und Kurse</span><span lang="en">Certificates and courses</span></h3>
